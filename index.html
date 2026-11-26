@@ -1,0 +1,4128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAS Ganjil PJOK Kelas X - SMK Waliwa Laimu</title>
+  <style>
+    /* ==========================================================================
+       VARIABEL WARNA & DESIGN TOKENS (TEMA OLAHRAGA: NAVY, PUTIH, HIJAU, ORANYE)
+       ========================================================================== */
+    :root {
+      --navy: #0f2544;
+      --navy-light: #1a3a68;
+      --navy-dark: #09172c;
+      --green: #16a34a;
+      --green-light: #dcfce7;
+      --green-dark: #15803d;
+      --orange: #f97316;
+      --orange-light: #ffedd5;
+      --orange-dark: #ea580c;
+      --white: #ffffff;
+      --bg-page: #f1f5f9;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border: #cbd5e1;
+      --danger: #dc2626;
+      --danger-light: #fee2e2;
+      --warning: #eab308;
+      --warning-light: #fef9c3;
+      --radius: 12px;
+      --shadow: 0 4px 20px rgba(15, 37, 68, 0.08);
+      --shadow-lg: 0 10px 30px rgba(15, 37, 68, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ==========================================================================
+       HEADER & NAVIGASI UTAMA (6 MENU)
+       ========================================================================== */
+    header {
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 60%, var(--navy-light) 100%);
+      color: var(--white);
+      box-shadow: var(--shadow-lg);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 4px solid var(--orange);
+    }
+
+    .header-top {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--green), var(--orange));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .brand-logo img, .school-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: var(--white);
+      padding: 3px;
+    }
+
+    .hero-school-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .hero-school-logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
+      background: var(--white);
+      padding: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .cert-school-logo {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 10px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-text h1 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      line-height: 1.2;
+    }
+
+    .brand-text p {
+      font-size: 0.8rem;
+      color: #cbd5e1;
+    }
+
+    .badge-offline {
+      background: rgba(22, 163, 74, 0.2);
+      border: 1px solid var(--green);
+      color: #86efac;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot-online {
+      width: 8px;
+      height: 8px;
+      background-color: #4ade80;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    nav.main-nav {
+      background-color: rgba(9, 23, 44, 0.65);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      overflow-x: auto;
+      gap: 6px;
+    }
+
+    .nav-btn {
+      background: transparent;
+      border: none;
+      color: #cbd5e1;
+      padding: 12px 16px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 3px solid transparent;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-btn.active {
+      color: var(--white);
+      border-bottom-color: var(--orange);
+      background: rgba(249, 115, 22, 0.15);
+    }
+
+    /* ==========================================================================
+       CONTAINER UTAMA & KOMPONEN UMUM
+       ========================================================================== */
+    main {
+      max-width: 1280px;
+      width: 100%;
+      margin: 24px auto;
+      padding: 0 20px;
+      flex: 1;
+    }
+
+    .section-view {
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .section-view.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid #e2e8f0;
+      margin-bottom: 20px;
+    }
+
+    .card-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+      border-bottom: 2px solid #f1f5f9;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* TOMBOL */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .btn-primary:hover:not(:disabled) {
+      background: var(--navy-light);
+    }
+
+    .btn-success {
+      background: var(--green);
+      color: var(--white);
+    }
+    .btn-success:hover:not(:disabled) {
+      background: var(--green-dark);
+    }
+
+    .btn-orange {
+      background: var(--orange);
+      color: var(--white);
+      box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);
+    }
+    .btn-orange:hover:not(:disabled) {
+      background: var(--orange-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-danger {
+      background: var(--danger);
+      color: var(--white);
+    }
+    .btn-danger:hover:not(:disabled) {
+      background: #b91c1c;
+    }
+
+    .btn-outline {
+      background: var(--white);
+      color: var(--navy);
+      border: 1.5px solid var(--border);
+    }
+    .btn-outline:hover:not(:disabled) {
+      background: #f8fafc;
+      border-color: var(--navy);
+    }
+
+    .btn-sm {
+      padding: 6px 12px;
+      font-size: 0.8rem;
+    }
+
+    /* FORM INPUT */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      font-size: 0.92rem;
+      color: var(--text-main);
+      background: var(--white);
+      transition: border-color 0.2s;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(15, 37, 68, 0.1);
+    }
+
+    /* BADGES */
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .badge-navy { background: #e0e7ff; color: var(--navy); }
+    .badge-green { background: var(--green-light); color: var(--green-dark); }
+    .badge-orange { background: var(--orange-light); color: var(--orange-dark); }
+    .badge-danger { background: var(--danger-light); color: var(--danger); }
+    .badge-warning { background: var(--warning-light); color: #854d0e; }
+
+    /* ==========================================================================
+       1. MENU BERANDA (HERO & INFO UJIAN)
+       ========================================================================== */
+    .hero-banner {
+      background: linear-gradient(125deg, var(--navy) 0%, #163766 55%, var(--green-dark) 100%);
+      color: var(--white);
+      border-radius: 16px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      right: -40px;
+      bottom: -40px;
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle, rgba(249, 115, 22, 0.35) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 24px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (max-width: 820px) {
+      .hero-grid { grid-template-columns: 1fr; }
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-title {
+      font-size: 1.85rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .hero-subtitle {
+      color: #e2e8f0;
+      font-size: 0.98rem;
+      margin-bottom: 20px;
+    }
+
+    .identity-box {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .identity-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.88rem;
+    }
+
+    .identity-row:last-child {
+      border-bottom: none;
+    }
+
+    .identity-row span:first-child {
+      color: #cbd5e1;
+    }
+
+    .identity-row strong {
+      color: var(--white);
+      text-align: right;
+    }
+
+    .info-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .info-stat-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 20px;
+      border-left: 5px solid var(--navy);
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .info-stat-card.green { border-left-color: var(--green); }
+    .info-stat-card.orange { border-left-color: var(--orange); }
+    .info-stat-card.navy { border-left-color: var(--navy); }
+
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       2. DASHBOARD GURU & STATISTIK
+       ========================================================================== */
+    .stats-overview {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .metric-box {
+      background: var(--white);
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .metric-value {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 4px 0;
+    }
+
+    .metric-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .chart-bar-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .chart-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .chart-label {
+      width: 150px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .chart-track {
+      flex: 1;
+      height: 24px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .chart-fill {
+      height: 100%;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 10px;
+      color: var(--white);
+      font-size: 0.78rem;
+      font-weight: 700;
+      transition: width 0.5s ease;
+    }
+
+    /* TABEL RESPONSIF */
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    th, td {
+      padding: 11px 12px;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    th {
+      background-color: var(--navy);
+      color: var(--white);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    tr:hover td {
+      background-color: #f8fafc;
+    }
+
+    /* ==========================================================================
+       3. RUANG UJIAN DIGITAL (CBT)
+       ========================================================================== */
+    .exam-topbar {
+      background: var(--navy);
+      color: var(--white);
+      padding: 14px 20px;
+      border-radius: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .timer-box {
+      background: var(--orange);
+      color: var(--white);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 1.15rem;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .timer-box.urgent {
+      background: var(--danger);
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+
+    .exam-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .exam-layout { grid-template-columns: 1fr; }
+    }
+
+    .question-box {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid #e2e8f0;
+    }
+
+    .question-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .question-text {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 20px;
+      line-height: 1.65;
+    }
+
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .option-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      background: var(--white);
+    }
+
+    .option-item:hover {
+      border-color: var(--navy-light);
+      background: #f8fafc;
+    }
+
+    .option-item.selected {
+      border-color: var(--green);
+      background: var(--green-light);
+    }
+
+    .option-letter {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      color: var(--navy);
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.88rem;
+    }
+
+    .option-item.selected .option-letter {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .nav-grid-numbers {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin: 14px 0;
+    }
+
+    .num-btn {
+      aspect-ratio: 1;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      color: var(--text-main);
+      transition: all 0.15s;
+    }
+
+    .num-btn.current {
+      border: 2.5px solid var(--navy);
+      box-shadow: 0 0 0 2px rgba(15, 37, 68, 0.2);
+    }
+
+    .num-btn.answered {
+      background: var(--green);
+      color: var(--white);
+      border-color: var(--green-dark);
+    }
+
+    .num-btn.doubt {
+      background: var(--warning);
+      color: #422006;
+      border-color: #ca8a04;
+    }
+
+    /* ==========================================================================
+       6. SERTIFIKAT KELULUSAN / HASIL UJIAN
+       ========================================================================== */
+    .certificate-wrapper {
+      background: var(--white);
+      border: 12px double var(--navy);
+      border-radius: 8px;
+      padding: 40px 32px;
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+      box-shadow: var(--shadow-lg);
+      text-align: center;
+      background-image: radial-gradient(circle at top right, rgba(22, 163, 74, 0.06), transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(249, 115, 22, 0.06), transparent 40%);
+    }
+
+    .cert-ribbon {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--white);
+      padding: 6px 22px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .cert-title {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--navy);
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .cert-student-name {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--green-dark);
+      border-bottom: 2px solid var(--orange);
+      display: inline-block;
+      padding: 4px 28px;
+      margin: 14px 0;
+    }
+
+    .cert-score-box {
+      display: inline-flex;
+      gap: 24px;
+      background: #f8fafc;
+      border: 1.5px solid var(--border);
+      padding: 14px 28px;
+      border-radius: 12px;
+      margin: 18px 0;
+    }
+
+    .cert-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 36px;
+      padding: 0 20px;
+      text-align: left;
+    }
+
+    /* ==========================================================================
+       MODAL KUSTOM (PENGGANTI ALERT/CONFIRM)
+       ========================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(9, 23, 44, 0.65);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      padding: 16px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-card {
+      background: var(--white);
+      border-radius: 14px;
+      max-width: 520px;
+      width: 100%;
+      padding: 24px;
+      box-shadow: var(--shadow-lg);
+      animation: fadeIn 0.2s ease;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .modal-body {
+      font-size: 0.94rem;
+      color: var(--text-main);
+      margin-bottom: 20px;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    /* OVERLAY KUNCI LAYAR UJIAN + ALARM */
+    .exam-lock-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(127, 29, 29, 0.96);
+      color: var(--white);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .exam-lock-overlay.locked {
+      display: flex;
+    }
+
+    .exam-lock-box {
+      background: #1e293b;
+      border: 3px solid var(--orange);
+      border-radius: 16px;
+      max-width: 480px;
+      width: 100%;
+      padding: 28px 24px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      animation: pulseBorder 1s infinite;
+    }
+
+    @keyframes pulseBorder {
+      0%, 100% { border-color: var(--orange); }
+      50% { border-color: #ef4444; }
+    }
+
+    /* SUB-TABS ADMIN */
+    .sub-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 10px;
+    }
+
+    .sub-tab-btn {
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #f8fafc;
+      font-weight: 700;
+      font-size: 0.84rem;
+      cursor: pointer;
+      color: var(--navy);
+    }
+
+    .sub-tab-btn.active {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy-dark);
+      color: #94a3b8;
+      text-align: center;
+      padding: 16px;
+      font-size: 0.82rem;
+      margin-top: 40px;
+    }
+
+    /* ==========================================================================
+       ATURAN CETAK (PRINT / PDF)
+       ========================================================================== */
+    @media print {
+      header, nav, footer, .no-print, .sub-tabs, .btn {
+        display: none !important;
+      }
+      body {
+        background: #ffffff !important;
+      }
+      main {
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+      .card {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+      }
+      .certificate-wrapper {
+        box-shadow: none !important;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================
+       HEADER & NAVIGASI 6 MENU UTAMA
+       ======================================================================== -->
+  <header>
+    <div class="header-top">
+      <div class="brand">
+        <div class="brand-logo" id="hdr-logo-box" aria-hidden="true" style="background: #ffffff; padding: 2px;">
+          <!-- Logo Resmi SMK Waliwa Laimu -->
+          <svg width="42" height="42" viewBox="0 0 200 220" fill="none">
+            <path d="M100 18C128 18 152 34 156 58V134C156 168 130 192 100 206C70 192 44 168 44 134V58C48 34 72 18 100 18Z" fill="#2196F3" stroke="#0D47A1" stroke-width="4"/>
+            <rect x="30" y="42" width="140" height="28" rx="10" fill="#FDD835" stroke="#F57F17" stroke-width="3"/>
+            <text x="100" y="60" text-anchor="middle" fill="#111111" font-family="Arial, sans-serif" font-weight="900" font-size="9.5" letter-spacing="0.2">SEKOLAH MENENGAH KEJURUAN</text>
+            <path d="M104 76C113 78 115 92 110 108C105 123 99 135 95 141C91 135 86 121 86 105C86 90 93 78 104 76Z" fill="#FBC02D" stroke="#3E2723" stroke-width="2.5"/>
+            <path d="M88 94L112 86M87 105L111 96M88 116L108 108M91 126L103 121" stroke="#3E2723" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M48 138Q66 130 84 138T120 138T152 138" stroke="#00E5FF" stroke-width="5" stroke-linecap="round" fill="none"/>
+            <path d="M52 145Q70 138 88 145T124 145T148 145" stroke="#0288D1" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+            <rect x="44" y="152" width="112" height="26" rx="10" fill="#FDD835" stroke="#F57F17" stroke-width="3"/>
+            <text x="100" y="169" text-anchor="middle" fill="#111111" font-family="Arial, sans-serif" font-weight="900" font-size="11.5">SMK WALIWA LAIMU</text>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1 id="hdr-school-name">SMK WALIWA LAIMU</h1>
+          <p id="hdr-app-subtitle">SAS Ganjil PJOK Kelas X (Fase E) • TP 2026/2027</p>
+        </div>
+      </div>
+      <div class="badge-offline">
+        <span class="dot-online"></span> Mode Offline Siap (Local Storage)
+      </div>
+    </div>
+
+    <nav class="main-nav" aria-label="Menu Utama">
+      <div class="nav-container">
+        <button class="nav-btn active" data-target="view-beranda" onclick="navigateTo('view-beranda')">
+          🏠 BERANDA
+        </button>
+        <button class="nav-btn" data-target="view-dashboard" onclick="navigateTo('view-dashboard')">
+          📊 DASHBOARD GURU
+        </button>
+        <button class="nav-btn" data-target="view-ujian" onclick="navigateTo('view-ujian')">
+          📝 MULAI UJIAN
+        </button>
+        <button class="nav-btn" data-target="view-hasil" onclick="navigateTo('view-hasil')">
+          📋 HASIL PESERTA
+        </button>
+        <button class="nav-btn" data-target="view-admin" onclick="navigateTo('view-admin')">
+          ⚙️ ADMIN
+        </button>
+        <button class="nav-btn" data-target="view-sertifikat" onclick="navigateTo('view-sertifikat')">
+          🏆 SERTIFIKAT
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ======================================================================
+         1. MENU BERANDA
+         ====================================================================== -->
+    <section id="view-beranda" class="section-view active">
+      <div class="hero-banner">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-school-header">
+              <div class="hero-school-logo" id="hero-logo-box">
+                <svg width="54" height="54" viewBox="0 0 200 220" fill="none">
+                  <path d="M100 18C128 18 152 34 156 58V134C156 168 130 192 100 206C70 192 44 168 44 134V58C48 34 72 18 100 18Z" fill="#2196F3" stroke="#0D47A1" stroke-width="4"/>
+                  <rect x="30" y="42" width="140" height="28" rx="10" fill="#FDD835" stroke="#F57F17" stroke-width="3"/>
+                  <text x="100" y="60" text-anchor="middle" fill="#111111" font-family="Arial, sans-serif" font-weight="900" font-size="9.5" letter-spacing="0.2">SEKOLAH MENENGAH KEJURUAN</text>
+                  <path d="M104 76C113 78 115 92 110 108C105 123 99 135 95 141C91 135 86 121 86 105C86 90 93 78 104 76Z" fill="#FBC02D" stroke="#3E2723" stroke-width="2.5"/>
+                  <path d="M88 94L112 86M87 105L111 96M88 116L108 108M91 126L103 121" stroke="#3E2723" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M48 138Q66 130 84 138T120 138T152 138" stroke="#00E5FF" stroke-width="5" stroke-linecap="round" fill="none"/>
+                  <path d="M52 145Q70 138 88 145T124 145T148 145" stroke="#0288D1" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+                  <rect x="44" y="152" width="112" height="26" rx="10" fill="#FDD835" stroke="#F57F17" stroke-width="3"/>
+                  <text x="100" y="169" text-anchor="middle" fill="#111111" font-family="Arial, sans-serif" font-weight="900" font-size="11.5">SMK WALIWA LAIMU</text>
+                </svg>
+              </div>
+              <div>
+                <span class="hero-tag" style="margin-bottom: 4px;">SUMATIF AKHIR SEMESTER (SAS) GANJIL</span>
+                <div style="font-weight: 800; font-size: 1.05rem; color: #fde68a;" id="hero-school-label">SMK WALIWA LAIMU</div>
+              </div>
+            </div>
+            <h2 class="hero-title" id="hero-mapel">Pendidikan Jasmani, Olahraga dan Kesehatan (PJOK)</h2>
+            <p class="hero-subtitle">
+              Platform asesmen digital terpadu berbasis kompetensi Fase E. Dirancang responsif, cepat, dan bekerja 100% secara luring (offline) untuk evaluasi pembelajaran yang akurat dan transparan.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+              <button class="btn btn-orange" onclick="navigateTo('view-ujian')">
+                🚀 MULAI UJIAN SEKARANG
+              </button>
+              <button class="btn btn-outline" style="background: rgba(255,255,255,0.12); color: #fff; border-color: rgba(255,255,255,0.35);" onclick="navigateTo('view-hasil')">
+                📄 CEK HASIL UJIAN
+              </button>
+            </div>
+          </div>
+
+          <div class="identity-box">
+            <div class="identity-row">
+              <span>Satuan Pendidikan</span>
+              <strong id="beranda-sekolah">SMK Waliwa Laimu</strong>
+            </div>
+            <div class="identity-row">
+              <span>Guru Pengampu</span>
+              <strong id="beranda-guru">Abd. Rahman Welemuly, S.Pd.</strong>
+            </div>
+            <div class="identity-row">
+              <span>Kelas / Fase</span>
+              <strong id="beranda-kelas">Kelas X / Fase E</strong>
+            </div>
+            <div class="identity-row">
+              <span>Tahun Pelajaran</span>
+              <strong id="beranda-tahun">2026/2027 (Ganjil)</strong>
+            </div>
+            <div class="identity-row">
+              <span>Tanggal Pelaksanaan</span>
+              <strong id="beranda-tanggal">27 November 2026</strong>
+            </div>
+            <div class="identity-row">
+              <span>Durasi & Jumlah Soal</span>
+              <strong id="beranda-durasi">120 Menit • 35 Soal (30 PG + 5 Essay)</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-cards-grid">
+        <div class="info-stat-card navy">
+          <div class="stat-icon" style="background: #e0e7ff; color: var(--navy);">🏸</div>
+          <div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700;">MATERI BULU TANGKIS</div>
+            <div style="font-weight: 800; color: var(--navy);">Grip & Ready Stance</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted);">Evaluasi keterampilan gerak fungsional</div>
+          </div>
+        </div>
+
+        <div class="info-stat-card green">
+          <div class="stat-icon" style="background: var(--green-light); color: var(--green-dark);">⚾</div>
+          <div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700;">MATERI SOFTBALL</div>
+            <div style="font-weight: 800; color: var(--green-dark);">Lempar, Tangkap, Pukul & Lari</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted);">Konsep dasar & teknik fungsional</div>
+          </div>
+        </div>
+
+        <div class="info-stat-card orange">
+          <div class="stat-icon" style="background: var(--orange-light); color: var(--orange-dark);">❤️</div>
+          <div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700;">KESEHATAN & KARAKTER</div>
+            <div style="font-weight: 800; color: var(--orange-dark);">Pola Hidup Sehat & P3</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted);">Kolaborasi, kepedulian & kesadaran diri</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">📌 Informasi Pelaksanaan Ujian</h3>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; font-size: 0.92rem;">
+          <div>
+            <strong style="color: var(--navy);">1. Komposisi & Bobot Penilaian</strong>
+            <p style="color: var(--text-muted); margin-top: 4px;">
+              Ujian terdiri dari <strong>30 soal Pilihan Ganda</strong> (bobot default 70%) yang dinilai otomatis dan <strong>5 soal Uraian/Essay</strong> (bobot default 30%) yang dikoreksi guru menggunakan rubrik terstandar.
+            </p>
+          </div>
+          <div>
+            <strong style="color: var(--navy);">2. Sistem Keamanan & Pemulihan Otomatis</strong>
+            <p style="color: var(--text-muted); margin-top: 4px;">
+              Setiap jawaban tersimpan otomatis di memori perangkat setiap kali Anda memilih opsi atau mengetik uraian. Jika halaman tidak sengaja tertutup/dimuat ulang, sesi ujian dapat langsung dipulihkan.
+            </p>
+          </div>
+          <div>
+            <strong style="color: var(--navy);">3. Cetak Hasil & Sertifikat Digital</strong>
+            <p style="color: var(--text-muted); margin-top: 4px;">
+              Setelah ujian selesai dan nilai direkapitulasi, peserta didik dapat melihat detail hasil serta mencetak Sertifikat SAS PJOK langsung dalam format PDF melalui browser.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         2. MENU DASHBOARD GURU
+         ====================================================================== -->
+    <section id="view-dashboard" class="section-view">
+      <!-- LOGIN DASHBOARD GURU -->
+      <div id="dashboard-login-box" class="card" style="max-width: 440px; margin: 20px auto;">
+        <div class="card-header">
+          <h3 class="card-title">🔐 Login Dashboard Guru</h3>
+        </div>
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px;">
+          Masukkan PIN/Kata Sandi Guru untuk mengakses statistik ujian dan rekapitulasi nilai peserta didik.
+        </p>
+        <form onsubmit="handleDashboardLogin(event)">
+          <div class="form-group">
+            <label for="dashboard-pass-input">PIN / Kata Sandi Guru</label>
+            <input type="password" id="dashboard-pass-input" class="form-control" placeholder="Masukkan kata sandi..." required />
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 6px;">🔓 Buka Dashboard Guru</button>
+        </form>
+      </div>
+
+      <!-- KONTEN DASHBOARD GURU (TERKUNCI SEBELUM LOGIN) -->
+      <div id="dashboard-panel-content" class="card" style="display: none;">
+        <div class="card-header">
+          <h3 class="card-title">📊 Dashboard Statistik & Rekapitulasi Guru</h3>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <button class="btn btn-outline btn-sm" onclick="refreshDashboard()">🔄 Segarkan Data</button>
+            <button class="btn btn-primary btn-sm" onclick="exportCSVResults()">📥 Ekspor Rekap CSV</button>
+            <button class="btn btn-outline btn-sm" onclick="logoutTeacherAccess()">🔒 Kunci Akses</button>
+          </div>
+        </div>
+
+        <div class="stats-overview" id="dashboard-metrics">
+          <!-- Diisi via JS -->
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 24px;">
+          <div style="background: #f8fafc; padding: 18px; border-radius: 12px; border: 1px solid #e2e8f0;">
+            <h4 style="color: var(--navy); margin-bottom: 10px; font-size: 0.98rem;">📈 Grafik Distribusi Predikat Nilai</h4>
+            <div class="chart-bar-container" id="dashboard-chart">
+              <!-- Diisi via JS -->
+            </div>
+          </div>
+
+          <div style="background: #f8fafc; padding: 18px; border-radius: 12px; border: 1px solid #e2e8f0;">
+            <h4 style="color: var(--navy); margin-bottom: 10px; font-size: 0.98rem;">🎯 Komposisi Soal Aktif</h4>
+            <div id="dashboard-question-summary" style="font-size: 0.9rem; line-height: 1.8;">
+              <!-- Diisi via JS -->
+            </div>
+          </div>
+        </div>
+
+        <h4 style="color: var(--navy); margin-bottom: 12px;">📋 Rekapitulasi Nilai & Status Peserta Ujian</h4>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>No. Peserta</th>
+                <th>Nama Lengkap</th>
+                <th>Kelas</th>
+                <th>Status</th>
+                <th>Skor PG</th>
+                <th>Skor Essay</th>
+                <th>Nilai Akhir</th>
+                <th>Predikat</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="dashboard-table-body">
+              <!-- Diisi via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         3. MENU MULAI UJIAN (FORM IDENTITAS & RUANG CBT)
+         ====================================================================== -->
+    <section id="view-ujian" class="section-view">
+      <!-- STEP A: FORM IDENTITAS PESERTA -->
+      <div id="exam-intro-card" class="card">
+        <div class="card-header">
+          <h3 class="card-title">📝 Konfirmasi Identitas Peserta Ujian</h3>
+          <span class="badge badge-orange">Wajib Diisi Sebelum Mulai</span>
+        </div>
+
+        <div id="resume-banner" style="display: none; background: var(--warning-light); border: 1.5px solid var(--warning); padding: 14px 18px; border-radius: 10px; margin-bottom: 18px;">
+          <strong style="color: #854d0e;">⚠️ Ditemukan Sesi Ujian yang Belum Selesai!</strong>
+          <p style="font-size: 0.88rem; color: #713f12; margin: 4px 0 10px;">
+            Sistem mendeteksi ujian atas nama <strong id="resume-name"></strong> masih tersimpan. Anda dapat melanjutkan ujian dari nomor terakhir.
+          </p>
+          <button class="btn btn-success btn-sm" onclick="resumeSavedExam()">▶️ Lanjutkan Sesi Ujian Tersimpan</button>
+        </div>
+
+        <form id="form-start-exam" onsubmit="handleStartExam(event)">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="input-nama">Nama Lengkap Peserta *</label>
+              <input type="text" id="input-nama" class="form-control" placeholder="Contoh: Ahmad Fauzi" required />
+            </div>
+            <div class="form-group">
+              <label for="input-nisn">NIS / NISN *</label>
+              <input type="text" id="input-nisn" class="form-control" placeholder="Contoh: 0081234567" required />
+            </div>
+            <div class="form-group">
+              <label for="input-kelas">Kelas *</label>
+              <select id="input-kelas" class="form-control" required>
+                <option value="">-- Pilih Kelas --</option>
+                <option value="X.NKPI">X.NKPI</option>
+                <option value="X.ABPAL">X.ABPAL</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="input-nopes">Nomor Peserta Ujian *</label>
+              <input type="text" id="input-nopes" class="form-control" placeholder="Contoh: SAS-2026-001" required />
+            </div>
+            <div class="form-group">
+              <label for="input-mapel">Mata Pelajaran</label>
+              <input type="text" id="input-mapel" class="form-control" value="PJOK (Kelas X / Fase E)" readonly style="background: #f1f5f9; font-weight: 700;" />
+            </div>
+          </div>
+
+          <div style="background: #f8fafc; border-left: 4px solid var(--navy); padding: 14px 18px; border-radius: 8px; margin: 14px 0 20px;">
+            <strong style="color: var(--navy); display: block; margin-bottom: 6px;">📌 Petunjuk Pengerjaan Ujian:</strong>
+            <ul style="padding-left: 20px; font-size: 0.88rem; color: var(--text-main); line-height: 1.7;">
+              <li>Periksa kembali Nama Lengkap, Kelas, dan Nomor Peserta sebelum menekan tombol mulai.</li>
+              <li>Waktu ujian berjalan otomatis (<strong id="intro-duration-text">120 menit</strong>) dan akan tertutup otomatis saat waktu habis.</li>
+              <li>Gunakan tombol <strong>Ragu-Ragu</strong> (kuning) jika ingin menandai soal untuk ditinjau ulang sebelum selesai.</li>
+              <li>Jangan menutup tab/browser selama ujian berlangsung. Jawaban tersimpan otomatis di perangkat Anda.</li>
+            </ul>
+          </div>
+
+          <button type="submit" class="btn btn-orange" style="font-size: 1rem; padding: 12px 26px;">
+            ▶️ MULAI MENGERJAKAN SOAL
+          </button>
+        </form>
+      </div>
+
+      <!-- STEP B: RUANG UJIAN AKTIF (CBT) -->
+      <div id="exam-active-area" style="display: none;">
+        <div class="exam-topbar">
+          <div>
+            <div style="font-size: 0.8rem; color: #cbd5e1;">Peserta Ujian:</div>
+            <strong id="exam-student-header" style="font-size: 1rem;">-</strong>
+          </div>
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <div style="text-align: right; font-size: 0.82rem;">
+              <div>Terjawab: <strong id="exam-answered-count" style="color: #86efac;">0</strong> / <span id="exam-total-count">35</span></div>
+              <div>Tersimpan Otomatis ✓</div>
+            </div>
+            <div class="timer-box" id="exam-timer-display">
+              ⏱️ 120:00
+            </div>
+          </div>
+        </div>
+
+        <div class="exam-layout">
+          <!-- KOLOM SOAL -->
+          <div class="question-box">
+            <div class="question-meta">
+              <div>
+                <span class="badge badge-navy" id="q-number-badge">Soal No. 1</span>
+                <span class="badge badge-green" id="q-type-badge">Pilihan Ganda</span>
+                <span class="badge badge-orange" id="q-level-badge">Level 1</span>
+              </div>
+              <span style="font-size: 0.8rem; color: var(--text-muted);" id="q-tp-label">TP 1</span>
+            </div>
+
+            <div class="question-text" id="q-text-content">
+              Memuat soal...
+            </div>
+
+            <!-- OPSI PILIHAN GANDA -->
+            <div class="options-list" id="q-options-container"></div>
+
+            <!-- INPUT JAWABAN ESSAY -->
+            <div id="q-essay-container" style="display: none;">
+              <label for="q-essay-input" style="font-weight: 700; color: var(--navy); display: block; margin-bottom: 8px;">
+                Tuliskan Jawaban Uraian Anda secara Jelas dan Lengkap:
+              </label>
+              <textarea id="q-essay-input" class="form-control" rows="6" placeholder="Ketik jawaban Anda di sini..." oninput="handleEssayInput(this.value)"></textarea>
+              <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 6px;">
+                * Jawaban uraian otomatis tersimpan setiap kali Anda mengetik.
+              </div>
+            </div>
+
+            <!-- TOMBOL NAVIGASI BAWAH SOAL -->
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; margin-top: 24px; padding-top: 16px; border-top: 1px solid #e2e8f0;">
+              <button type="button" class="btn btn-outline" id="btn-prev-q" onclick="prevQuestion()">
+                ⬅️ Sebelumnya
+              </button>
+
+              <button type="button" class="btn" id="btn-doubt-q" style="background: var(--warning-light); color: #854d0e; border: 1.5px solid var(--warning);" onclick="toggleDoubt()">
+                🚩 Tandai Ragu-Ragu
+              </button>
+
+              <button type="button" class="btn btn-primary" id="btn-next-q" onclick="nextQuestion()">
+                Berikutnya ➡️
+              </button>
+            </div>
+          </div>
+
+          <!-- PANEL NAVIGASI NOMOR SOAL -->
+          <div class="card" style="padding: 18px;">
+            <h4 style="color: var(--navy); font-size: 0.95rem; margin-bottom: 8px;">🧭 Navigasi Nomor Soal</h4>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.75rem; margin-bottom: 10px;">
+              <span><span style="display:inline-block;width:10px;height:10px;background:var(--green);border-radius:2px;"></span> Dijawab</span>
+              <span><span style="display:inline-block;width:10px;height:10px;background:var(--warning);border-radius:2px;"></span> Ragu</span>
+              <span><span style="display:inline-block;width:10px;height:10px;border:1px solid #94a3b8;border-radius:2px;"></span> Belum</span>
+            </div>
+
+            <div class="nav-grid-numbers" id="exam-number-grid">
+              <!-- Nomor 1..35 -->
+            </div>
+
+            <button type="button" class="btn btn-danger" style="width: 100%; margin-top: 12px;" onclick="confirmFinishExam()">
+              ✅ SELESAI & KUMPULKAN UJIAN
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4. MENU HASIL PESERTA
+         ====================================================================== -->
+    <section id="view-hasil" class="section-view">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">📋 Hasil Evaluasi & Detail Jawaban Peserta</h3>
+          <div class="no-print" style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <select id="select-result-student" class="form-control" style="width: auto; min-width: 240px;" onchange="renderSelectedStudentResult()">
+              <option value="">-- Pilih Peserta Ujian --</option>
+            </select>
+            <button class="btn btn-primary btn-sm" onclick="window.print()">🖨️ Cetak Hasil</button>
+            <button class="btn btn-success btn-sm" onclick="exportSingleStudentJSON()">📥 Ekspor JSON</button>
+          </div>
+        </div>
+
+        <div id="result-detail-container">
+          <div style="text-align: center; padding: 40px 20px; color: var(--text-muted);">
+            Silakan pilih nama peserta ujian pada dropdown di atas untuk melihat rincian nilai, status ketuntasan, dan detail jawaban.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         5. MENU ADMIN & PANEL GURU
+         ====================================================================== -->
+    <section id="view-admin" class="section-view">
+      <!-- LOGIN ADMIN -->
+      <div id="admin-login-box" class="card" style="max-width: 440px; margin: 20px auto;">
+        <div class="card-header">
+          <h3 class="card-title">🔐 Login Administrator / Guru</h3>
+        </div>
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px;">
+          Masukkan PIN/Kata Sandi Guru untuk mengakses bank soal, kunci jawaban, penilaian essay, dan pengaturan aplikasi.
+        </p>
+        <form onsubmit="handleAdminLogin(event)">
+          <div class="form-group">
+            <label for="admin-pass-input">Kata Sandi Admin / Guru</label>
+            <input type="password" id="admin-pass-input" class="form-control" placeholder="Masukkan kata sandi..." required />
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 6px;">🔓 Masuk Panel Admin</button>
+        </form>
+      </div>
+
+      <!-- PANEL ADMIN TERBUKA -->
+      <div id="admin-panel-content" style="display: none;">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">⚙️ Panel Kendali Guru & Administrator</h3>
+            <button class="btn btn-outline btn-sm" onclick="logoutTeacherAccess()">🔒 Keluar Admin</button>
+          </div>
+
+          <div class="sub-tabs">
+            <button class="sub-tab-btn active" onclick="switchAdminTab('tab-grading', this)">✍️ Penilaian Essay & Koreksi</button>
+            <button class="sub-tab-btn" onclick="switchAdminTab('tab-questions', this)">📚 Bank Soal & Kunci Jawaban (35)</button>
+            <button class="sub-tab-btn" onclick="switchAdminTab('tab-students', this)">👥 Pengelolaan Peserta</button>
+            <button class="sub-tab-btn" onclick="switchAdminTab('tab-settings', this)">🛠️ Pengaturan Ujian & Bobot</button>
+            <button class="sub-tab-btn" onclick="switchAdminTab('tab-backup', this)">💾 Backup, Restore & Reset</button>
+          </div>
+
+          <!-- TAB 1: PENILAIAN ESSAY MANUAL -->
+          <div id="tab-grading" class="admin-tab-pane">
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 16px;">
+              <div>
+                <h4 style="color: var(--navy);">Penilaian Jawaban Uraian (Essay) Berbasis Rubrik</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Pilih peserta yang telah mengumpulkan ujian untuk memberikan skor (0-100) dan umpan balik pada 5 soal essay.</p>
+              </div>
+              <select id="grading-student-select" class="form-control" style="width: auto; min-width: 260px;" onchange="renderEssayGradingForm()">
+                <option value="">-- Pilih Peserta untuk Dikoreksi --</option>
+              </select>
+            </div>
+            <div id="essay-grading-container"></div>
+          </div>
+
+          <!-- TAB 2: BANK SOAL & KUNCI JAWABAN -->
+          <div id="tab-questions" class="admin-tab-pane" style="display: none;">
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 16px;">
+              <h4 style="color: var(--navy);">Daftar Soal, Level Kognitif & Kunci Jawaban</h4>
+              <button class="btn btn-success btn-sm" onclick="openQuestionModal()">➕ Tambah Soal Baru</button>
+            </div>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Bentuk</th>
+                    <th>Level</th>
+                    <th>Tujuan Pembelajaran</th>
+                    <th>Pertanyaan</th>
+                    <th>Kunci / Pedoman</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-questions-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- TAB 3: PENGELOLAAN PESERTA -->
+          <div id="tab-students" class="admin-tab-pane" style="display: none;">
+            <h4 style="color: var(--navy); margin-bottom: 10px;">Daftar Peserta Terdaftar & Riwayat Ujian</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
+              Anda dapat menambahkan daftar peserta terlebih dahulu atau menghapus riwayat peserta tertentu jika diperlukan ujian ulang.
+            </p>
+            <form onsubmit="addRegisteredStudent(event)" style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px;">
+              <input type="text" id="reg-nopes" class="form-control" style="max-width: 180px;" placeholder="No. Peserta" required />
+              <input type="text" id="reg-nama" class="form-control" style="max-width: 240px;" placeholder="Nama Lengkap Siswa" required />
+              <select id="reg-kelas" class="form-control" style="max-width: 160px;" required>
+                <option value="">-- Kelas --</option>
+                <option value="X.NKPI">X.NKPI</option>
+                <option value="X.ABPAL">X.ABPAL</option>
+              </select>
+              <button type="submit" class="btn btn-primary btn-sm">➕ Tambah Peserta</button>
+            </form>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>No. Peserta</th>
+                    <th>Nama Lengkap</th>
+                    <th>Kelas</th>
+                    <th>Status Ujian</th>
+                    <th>Nilai Akhir</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-students-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- TAB 4: PENGATURAN IDENTITAS, DURASI & BOBOT -->
+          <div id="tab-settings" class="admin-tab-pane" style="display: none;">
+            <form onsubmit="saveAppSettings(event)">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label>Nama Sekolah / Satuan Pendidikan</label>
+                  <input type="text" id="set-sekolah" class="form-control" required />
+                </div>
+                <div class="form-group">
+                  <label>Logo Sekolah (PNG / JPG / SVG)</label>
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <div id="set-logo-preview" style="width: 44px; height: 44px; border: 1.5px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #fff; flex-shrink: 0;"></div>
+                    <input type="file" id="set-logo-file" accept="image/*" class="form-control" style="padding: 6px 10px; font-size: 0.82rem;" onchange="handleSchoolLogoUpload(event)" />
+                    <button type="button" class="btn btn-outline btn-sm" onclick="resetSchoolLogo()">Reset</button>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Nama Guru Pengampu</label>
+                  <input type="text" id="set-guru" class="form-control" required />
+                </div>
+                <div class="form-group">
+                  <label>Mata Pelajaran</label>
+                  <input type="text" id="set-mapel" class="form-control" required />
+                </div>
+                <div class="form-group">
+                  <label>Kelas / Fase</label>
+                  <input type="text" id="set-kelas" class="form-control" required />
+                </div>
+                <div class="form-group">
+                  <label>Tahun Pelajaran / Semester</label>
+                  <input type="text" id="set-tahun" class="form-control" required />
+                </div>
+                <div class="form-group">
+                  <label>Tanggal Pelaksanaan Ujian</label>
+                  <input type="text" id="set-tanggal" class="form-control" required />
+                </div>
+                <div class="form-group">
+                  <label>Durasi Ujian (Menit)</label>
+                  <input type="number" id="set-durasi" class="form-control" min="5" max="300" required />
+                </div>
+                <div class="form-group">
+                  <label>Bobot Nilai Pilihan Ganda (%)</label>
+                  <input type="number" id="set-bobot-pg" class="form-control" min="0" max="100" required />
+                </div>
+                <div class="form-group">
+                  <label>Bobot Nilai Essay (%)</label>
+                  <input type="number" id="set-bobot-essay" class="form-control" min="0" max="100" required />
+                </div>
+                <div class="form-group">
+                  <label>KKTP / Batas Ketuntasan (0-100)</label>
+                  <input type="number" id="set-kkm" class="form-control" min="0" max="100" required />
+                </div>
+                <div class="form-group">
+                  <label>Acak Urutan Soal?</label>
+                  <select id="set-acak-soal" class="form-control">
+                    <option value="true">Ya, Acak Soal PG & Essay</option>
+                    <option value="false">Tidak (Urut sesuai Kisi-Kisi)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Acak Pilihan Jawaban (A-E)?</label>
+                  <select id="set-acak-opsi" class="form-control">
+                    <option value="true">Ya, Acak Opsi Jawaban</option>
+                    <option value="false">Tidak (Sesuai Asli)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Tampilkan Hasil Langsung ke Siswa?</label>
+                  <select id="set-show-result" class="form-control">
+                    <option value="true">Ya, Tampilkan Setelah Selesai</option>
+                    <option value="false">Sembunyikan (Hanya Rekap Guru)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Kata Sandi Admin Baru</label>
+                  <input type="text" id="set-admin-pass" class="form-control" required />
+                </div>
+              </div>
+              <button type="submit" class="btn btn-success" style="margin-top: 10px;">💾 Simpan Pengaturan</button>
+            </form>
+          </div>
+
+          <!-- TAB 5: BACKUP, RESTORE & RESET -->
+          <div id="tab-backup" class="admin-tab-pane" style="display: none;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px;">
+              <div style="background: #f8fafc; padding: 18px; border-radius: 10px; border: 1px solid #e2e8f0;">
+                <h4 style="color: var(--navy); margin-bottom: 8px;">📤 Backup Seluruh Data (JSON)</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
+                  Unduh seluruh bank soal, pengaturan, dan hasil ujian peserta ke dalam file JSON sebagai cadangan offline.
+                </p>
+                <button class="btn btn-primary btn-sm" onclick="backupAllDataJSON()">📥 Unduh File Backup JSON</button>
+              </div>
+
+              <div style="background: #f8fafc; padding: 18px; border-radius: 10px; border: 1px solid #e2e8f0;">
+                <h4 style="color: var(--navy); margin-bottom: 8px;">📥 Restore Data dari JSON</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
+                  Pulihkan data ujian atau bank soal dari file cadangan JSON yang pernah diunduh sebelumnya.
+                </p>
+                <input type="file" id="restore-file-input" accept=".json" style="font-size: 0.82rem; margin-bottom: 10px;" />
+                <button class="btn btn-success btn-sm" onclick="restoreAllDataJSON()">🔄 Pulihkan Data JSON</button>
+              </div>
+
+              <div style="background: var(--danger-light); padding: 18px; border-radius: 10px; border: 1px solid #fca5a5;">
+                <h4 style="color: var(--danger); margin-bottom: 8px;">⚠️ Reset Data Ujian</h4>
+                <p style="font-size: 0.85rem; color: #7f1d1d; margin-bottom: 14px;">
+                  Hapus seluruh riwayat pengerjaan siswa atau kembalikan bank soal ke pengaturan awal pabrik.
+                </p>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                  <button class="btn btn-danger btn-sm" onclick="confirmResetResults()">🗑️ Hapus Hasil Peserta</button>
+                  <button class="btn btn-outline btn-sm" style="border-color: var(--danger); color: var(--danger);" onclick="confirmFactoryReset()">🔄 Reset Total Aplikasi</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         6. MENU SERTIFIKAT HASIL UJIAN
+         ====================================================================== -->
+    <section id="view-sertifikat" class="section-view">
+      <div class="card no-print" style="margin-bottom: 18px;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px;">
+          <div>
+            <h3 class="card-title">🏆 Generator Sertifikat Hasil Asesmen</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Pilih nama peserta untuk menampilkan sertifikat resmi dan cetak/simpan sebagai PDF.</p>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <select id="cert-student-select" class="form-control" style="width: auto; min-width: 240px;" onchange="renderCertificate()">
+              <option value="">-- Pilih Peserta Ujian --</option>
+            </select>
+            <button class="btn btn-orange" onclick="window.print()">🖨️ Cetak / Simpan PDF</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="certificate-render-area">
+        <div class="certificate-wrapper">
+          <div class="cert-school-logo" id="cert-logo-box">
+            <svg width="70" height="70" viewBox="0 0 200 220" fill="none">
+              <path d="M100 18C128 18 152 34 156 58V134C156 168 130 192 100 206C70 192 44 168 44 134V58C48 34 72 18 100 18Z" fill="#2196F3" stroke="#0D47A1" stroke-width="4"/>
+              <rect x="30" y="42" width="140" height="28" rx="10" fill="#FDD835" stroke="#F57F17" stroke-width="3"/>
+              <text x="100" y="60" text-anchor="middle" fill="#111111" font-family="Arial, sans-serif" font-weight="900" font-size="9.5" letter-spacing="0.2">SEKOLAH MENENGAH KEJURUAN</text>
+              <path d="M104 76C113 78 115 92 110 108C105 123 99 135 95 141C91 135 86 121 86 105C86 90 93 78 104 76Z" fill="#FBC02D" stroke="#3E2723" stroke-width="2.5"/>
+              <path d="M88 94L112 86M87 105L111 96M88 116L108 108M91 126L103 121" stroke="#3E2723" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M48 138Q66 130 84 138T120 138T152 138" stroke="#00E5FF" stroke-width="5" stroke-linecap="round" fill="none"/>
+              <path d="M52 145Q70 138 88 145T124 145T148 145" stroke="#0288D1" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+              <rect x="44" y="152" width="112" height="26" rx="10" fill="#FDD835" stroke="#F57F17" stroke-width="3"/>
+              <text x="100" y="169" text-anchor="middle" fill="#111111" font-family="Arial, sans-serif" font-weight="900" font-size="11.5">SMK WALIWA LAIMU</text>
+            </svg>
+          </div>
+          <div class="cert-ribbon" id="cert-school-top">SMK WALIWA LAIMU</div>
+          <h2 class="cert-title">SERTIFIKAT HASIL EVALUASI</h2>
+          <p style="font-size: 0.95rem; color: var(--text-muted); font-weight: 600;">
+            SUMATIF AKHIR SEMESTER (SAS) GANJIL • TAHUN PELAJARAN <span id="cert-tahun">2026/2027</span>
+          </p>
+
+          <p style="margin-top: 22px; font-size: 0.95rem;">Diberikan kepada Peserta Didik:</p>
+          <div class="cert-student-name" id="cert-nama">[Nama Peserta Didik]</div>
+          <p style="font-size: 0.95rem; color: var(--navy); font-weight: 700;">
+            NIS/NISN: <span id="cert-nisn">-</span> &nbsp;|&nbsp; Nomor Peserta: <span id="cert-nopes">-</span> &nbsp;|&nbsp; Kelas: <span id="cert-kelas">-</span>
+          </p>
+
+          <p style="max-width: 640px; margin: 16px auto; font-size: 0.92rem; color: var(--text-main);">
+            Telah mengikuti dan menyelesaikan Asesmen Sumatif Akhir Semester Ganjil pada Mata Pelajaran
+            <strong id="cert-mapel">Pendidikan Jasmani, Olahraga dan Kesehatan (PJOK)</strong> Fase E dengan capaian hasil sebagai berikut:
+          </p>
+
+          <div class="cert-score-box">
+            <div>
+              <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 700;">NILAI AKHIR</div>
+              <div style="font-size: 1.8rem; font-weight: 900; color: var(--navy);" id="cert-nilai">0.0</div>
+            </div>
+            <div style="width: 1px; background: var(--border);"></div>
+            <div>
+              <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 700;">PREDIKAT</div>
+              <div style="font-size: 1.8rem; font-weight: 900; color: var(--green-dark);" id="cert-predikat">-</div>
+            </div>
+            <div style="width: 1px; background: var(--border);"></div>
+            <div>
+              <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 700;">KETERANGAN</div>
+              <div style="font-size: 1.15rem; font-weight: 800; color: var(--orange-dark); margin-top: 6px;" id="cert-status">-</div>
+            </div>
+          </div>
+
+          <div class="cert-footer">
+            <div style="font-size: 0.8rem; color: var(--text-muted);">
+              <div>Tanggal Terbit: <strong id="cert-date">-</strong></div>
+              <div>Sistem Asesmen Offline SMK Waliwa Laimu</div>
+            </div>
+            <div style="text-align: center; min-width: 220px;">
+              <div style="font-size: 0.85rem; margin-bottom: 54px;">Guru Mata Pelajaran PJOK,</div>
+              <strong style="color: var(--navy); border-bottom: 1.5px solid var(--navy); padding-bottom: 2px;" id="cert-guru">
+                Abd. Rahman Welemuly, S.Pd.
+              </strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2026/2027 Aplikasi SAS Ganjil PJOK Kelas X (Fase E) — <strong>SMK Waliwa Laimu</strong> • Guru Pengampu: <strong>Abd. Rahman Welemuly, S.Pd.</strong>
+  </footer>
+
+  <!-- ========================================================================
+       MODAL DIALOG KUSTOM (PENGGANTI ALERT & CONFIRM)
+       ======================================================================== -->
+  <div class="modal-backdrop" id="custom-modal">
+    <div class="modal-card">
+      <div class="modal-title" id="modal-title">Konfirmasi</div>
+      <div class="modal-body" id="modal-body">Pesan konfirmasi...</div>
+      <div class="modal-actions" id="modal-actions"></div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       OVERLAY KUNCI LAYAR OTOMATIS & ALARM SAAT KELUAR LAYAR UJIAN
+       ======================================================================== -->
+  <div class="exam-lock-overlay" id="exam-lock-overlay">
+    <div class="exam-lock-box">
+      <div style="font-size: 3rem; margin-bottom: 8px;">🚨🔒</div>
+      <h2 style="color: #fca5a5; font-size: 1.35rem; font-weight: 800; margin-bottom: 10px;">
+        PERINGATAN KEAMANAN UJIAN!
+      </h2>
+      <p style="font-size: 0.92rem; color: #f8fafc; margin-bottom: 12px; line-height: 1.55;">
+        Sistem mendeteksi Anda <strong>keluar dari layar/tab ujian</strong> saat ujian sedang berlangsung. Layar ujian telah dikunci otomatis!
+      </p>
+      <div style="background: rgba(239, 68, 68, 0.2); border: 1px solid #f87171; border-radius: 8px; padding: 10px; font-size: 0.84rem; color: #fecaca; margin-bottom: 16px;">
+        Pelanggaran tercatat ke-<strong id="lock-violation-count">1</strong> • Hubungi Guru / Pengawas Ujian untuk membuka kunci menggunakan PIN.
+      </div>
+      <form onsubmit="unlockExamWithPin(event)">
+        <div class="form-group" style="text-align: left;">
+          <label for="unlock-pin-input" style="color: #e2e8f0;">PIN Pengawas / Guru:</label>
+          <input type="password" id="unlock-pin-input" class="form-control" placeholder="Masukkan PIN untuk membuka kunci..." required />
+        </div>
+        <button type="submit" class="btn btn-orange" style="width: 100%; margin-top: 6px;">
+          🔓 Buka Kunci & Lanjutkan Ujian
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL TAMBAH / EDIT SOAL (ADMIN)
+       ======================================================================== -->
+  <div class="modal-backdrop" id="question-modal">
+    <div class="modal-card" style="max-width: 660px;">
+      <div class="modal-title" id="q-modal-title">Tambah / Edit Soal</div>
+      <form onsubmit="saveQuestionForm(event)">
+        <input type="hidden" id="edit-q-index" value="-1" />
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Bentuk Soal</label>
+            <select id="edit-q-type" class="form-control" onchange="toggleQuestionModalFields()">
+              <option value="PG">Pilihan Ganda (PG)</option>
+              <option value="ESSAY">Uraian (Essay)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Level Kognitif</label>
+            <select id="edit-q-level" class="form-control">
+              <option value="Level 1 (Pemahaman)">Level 1 (Pemahaman)</option>
+              <option value="Level 2 (Penerapan)">Level 2 (Penerapan)</option>
+              <option value="Level 3 (Penalaran/HOTS)">Level 3 (Penalaran/HOTS)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Tujuan Pembelajaran (TP)</label>
+          <input type="text" id="edit-q-tp" class="form-control" placeholder="Contoh: TP 1 - Bulu Tangkis (Grip & Stance)" required />
+        </div>
+        <div class="form-group">
+          <label>Pertanyaan / Stimulus Soal</label>
+          <textarea id="edit-q-text" class="form-control" rows="3" required></textarea>
+        </div>
+
+        <div id="edit-pg-fields">
+          <div class="form-grid">
+            <div class="form-group"><label>Pilihan A</label><input type="text" id="edit-opt-0" class="form-control" /></div>
+            <div class="form-group"><label>Pilihan B</label><input type="text" id="edit-opt-1" class="form-control" /></div>
+            <div class="form-group"><label>Pilihan C</label><input type="text" id="edit-opt-2" class="form-control" /></div>
+            <div class="form-group"><label>Pilihan D</label><input type="text" id="edit-opt-3" class="form-control" /></div>
+            <div class="form-group"><label>Pilihan E</label><input type="text" id="edit-opt-4" class="form-control" /></div>
+            <div class="form-group">
+              <label>Kunci Jawaban PG</label>
+              <select id="edit-q-key" class="form-control">
+                <option value="0">A</option>
+                <option value="1">B</option>
+                <option value="2">C</option>
+                <option value="3">D</option>
+                <option value="4">E</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Pembahasan Singkat</label>
+            <textarea id="edit-q-explanation" class="form-control" rows="2"></textarea>
+          </div>
+        </div>
+
+        <div id="edit-essay-fields" style="display: none;">
+          <div class="form-group">
+            <label>Pedoman Jawaban Essay</label>
+            <textarea id="edit-q-guide" class="form-control" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Rubrik Penilaian (Kriteria Skor 0-100)</label>
+            <textarea id="edit-q-rubric" class="form-control" rows="2"></textarea>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" onclick="closeQuestionModal()">Batal</button>
+          <button type="submit" class="btn btn-success">💾 Simpan Soal</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       JAVASCRIPT MURNI (DATA 35 SOAL, ENGINE UJIAN, RUBRIK, LOCALSTORAGE)
+       ======================================================================== -->
+  <script>
+    /* ========================================================================
+       1. BANK SOAL DEFAULT (35 SOAL SESUAI KISI-KISI & 6 TUJUAN PEMBELAJARAN)
+       ======================================================================== */
+    const DEFAULT_QUESTIONS = [
+      // --- TP 1: BULU TANGKIS (GRIP & STANCE) - 6 SOAL PG ---
+      {
+        id: 1,
+        type: 'PG',
+        level: 'Level 1 (Pemahaman)',
+        tp: 'TP 1 - Bulu Tangkis (Grip)',
+        text: 'Pada permainan bulu tangkis, teknik memegang raket yang dilakukan seperti posisi berjabat tangan sehingga membentuk huruf "V" di antara ibu jari dan jari telunjuk disebut ....',
+        options: [
+          'Backhand grip',
+          'Forehand grip',
+          'American grip',
+          'Frying pan grip',
+          'Combination grip'
+        ],
+        answerIndex: 1,
+        explanation: 'Forehand grip (pegangan jabat tangan) ditandai dengan pertemuan pangkal ibu jari dan telunjuk membentuk huruf V pada sisi sempit gagang raket.'
+      },
+      {
+        id: 2,
+        type: 'PG',
+        level: 'Level 1 (Pemahaman)',
+        tp: 'TP 1 - Bulu Tangkis (Grip)',
+        text: 'Perbedaan utama posisi jari saat melakukan transisi dari pegangan forehand menuju pegangan backhand dalam permainan bulu tangkis terletak pada ....',
+        options: [
+          'Jari kelingking menekan ujung gagang raket secara penuh',
+          'Telapak tangan menempel pada bagian terlebar gagang raket seperti memegang wajan',
+          'Ibu jari bergeser menekan bagian permukaan gagang raket yang lebar untuk memberi dorongan',
+          'Jari telunjuk lurus sejajar dengan batang raket (shaft)',
+          'Semua jari menggenggam erat tanpa ada celah di antara jari'
+        ],
+        answerIndex: 2,
+        explanation: 'Pada backhand grip, pegangan diputar sedikit ke dalam dan ibu jari diletakkan menekan permukaan lebar gagang raket sebagai tumpuan tenaga.'
+      },
+      {
+        id: 3,
+        type: 'PG',
+        level: 'Level 1 (Pemahaman)',
+        tp: 'TP 1 - Bulu Tangkis (Stance)',
+        text: 'Posisi berdiri siap (ready stance) yang benar di tengah lapangan bulu tangkis sebelum lawan memukul shuttlecock adalah ....',
+        options: [
+          'Kedua kaki rapat lurus dan raket berada di samping paha',
+          'Kaki dibuka selebar bahu, lutut sedikit ditekuk, berat badan bertumpu pada ujung kaki depan, dan raket diangkat di depan dada',
+          'Kaki kanan berada jauh di belakang dengan tumit terangkat tinggi dan raket di bawah pinggang',
+          'Berat badan bertumpu penuh pada tumit agar tidak mudah terjatuh ke depan',
+          'Posisi badan menyamping penuh ke arah net dengan pandangan menunduk'
+        ],
+        answerIndex: 1,
+        explanation: 'Ready stance membutuhkan kaki selebar bahu, lutut fleksi, tumpuan di ujung kaki (balls of feet) agar eksplosif, serta raket siap di depan tubuh.'
+      },
+      {
+        id: 4,
+        type: 'PG',
+        level: 'Level 2 (Penerapan)',
+        tp: 'TP 1 - Bulu Tangkis (Stance)',
+        text: 'Ketika Anda mengangkat shuttlecock tinggi ke area belakang lawan (pukulan lob) dan lawan bersiap melakukan lompatan smes keras, posisi berdiri (stance) bertahan yang paling tepat Anda terapkan adalah ....',
+        options: [
+          'Attacking stance dengan kaki kanan di belakang dan raket diangkat tinggi di atas kepala',
+          'Net stance dengan berdiri sangat dekat di garis servis depan',
+          'Defensive stance dengan posisi kuda-kuda lebih rendah, kaki sejajar selebar bahu, dan raket di depan pinggang/dada',
+          'Berdiri tegak di garis belakang lapangan sambil memegang raket dengan dua tangan',
+          'Menyilangkan kedua kaki agar mudah bergerak ke sudut kiri dan kanan'
+        ],
+        answerIndex: 2,
+        explanation: 'Defensive stance dilakukan dengan merendahkan titik berat tubuh (lutut lebih ditekuk), kaki sejajar terbuka, dan raket di depan tubuh untuk menahan smes.'
+      },
+      {
+        id: 5,
+        type: 'PG',
+        level: 'Level 3 (Penalaran/HOTS)',
+        tp: 'TP 1 - Evaluasi Gerak Grip & Stance',
+        text: 'Seorang siswa sering terlambat dan pukulannya menyangkut di net setiap kali shuttlecock diarahkan cepat ke sisi kiri tubuhnya. Setelah diamati, ia tetap mempertahankan forehand grip kaku dan tidak memutar bahu. Evaluasi perbaikan gerak yang paling tepat untuk siswa tersebut adalah ....',
+        options: [
+          'Mengganti raket dengan ukuran yang lebih berat agar ayunan lebih kuat',
+          'Melatih kelenturan jari untuk memutar grip ke backhand disertai perubahan posisi kaki dan bahu ke arah datangnya shuttlecock',
+          'Tetap menggunakan forehand grip namun memukul shuttlecock dari belakang punggung',
+          'Mundur hingga ke garis paling belakang setiap kali shuttlecock datang ke sisi kiri',
+          'Menggenggam gagang raket sekuat mungkin sejak awal reli berlangsung'
+        ],
+        answerIndex: 1,
+        explanation: 'Pegangan raket harus rileks agar mudah bertransisi ke backhand grip saat bola mengarah ke sisi kiri (non-raket), diiringi footwork yang sesuai.'
+      },
+      {
+        id: 6,
+        type: 'PG',
+        level: 'Level 3 (Penalaran/HOTS)',
+        tp: 'TP 1 - Evaluasi Gerak Stance',
+        text: 'Dalam pertandingan tunggal, Rian melakukan pukulan smash dari sudut belakang kanan, namun ia diam terpaku di sudut tersebut sehingga mudah dimatikan lawan lewat pukulan dropshot ke sudut depan kiri. Kesalahan fungsional gerak yang dilakukan Rian adalah ....',
+        options: [
+          'Tidak segera melakukan langkah pemulihan (recovery footwork) kembali ke posisi siap (base stance) di tengah lapangan',
+          'Menggunakan teknik backhand grip saat melakukan lompatan smash',
+          'Terlalu cepat berlari menuju ke depan net sebelum shuttlecock dipukul',
+          'Menekuk lutut terlalu dalam saat berada di tengah lapangan',
+          'Mengangkat kepala raket terlalu tinggi saat menunggu pengembalian lawan'
+        ],
+        answerIndex: 0,
+        explanation: 'Setiap selesai memukul dari sudut lapangan, pemain wajib segera kembali ke central base position dengan ready stance untuk menutup ruang lapangan.'
+      },
+
+      // --- TP 2: PROFIL PELAJAR PANCASILA - 5 SOAL PG ---
+      {
+        id: 7,
+        type: 'PG',
+        level: 'Level 1 (Pemahaman)',
+        tp: 'TP 2 - Profil Pelajar Pancasila',
+        text: 'Dalam permainan bulu tangkis nomor ganda maupun permainan beregu softball, nilai Profil Pelajar Pancasila berupa kemampuan menyelaraskan tindakan sendiri dengan tindakan rekan satu tim demi mencapai tujuan bersama disebut ....',
+        options: [
+          'Kemandirian mutlak',
+          'Kolaborasi (bergotong royong)',
+          'Kompetisi individual',
+          'Kreativitas tunggal',
+          'Bernalar kritis pasif'
+        ],
+        answerIndex: 1,
+        explanation: 'Kolaborasi adalah inti dimensi Bergotong Royong di mana peserta didik bekerja sama, berkomunikasi, dan saling melengkapi posisi dalam tim.'
+      },
+      {
+        id: 8,
+        type: 'PG',
+        level: 'Level 1 (Pemahaman)',
+        tp: 'TP 2 - Profil Pelajar Pancasila',
+        text: 'Bentuk penerapan elemen regulasi diri dan kesadaran diri ketika seorang pemain menerima keputusan wasit yang dirasa kurang menguntungkan dalam pertandingan olahraga adalah ....',
+        options: [
+          'Memprotes wasit dengan nada tinggi sambil menghentikan permainan',
+          'Meninggalkan lapangan sebelum pertandingan dinyatakan selesai',
+          'Mengendalikan emosi, menerima keputusan dengan lapang dada, dan kembali fokus pada strategi permainan',
+          'Menyalahkan rekan setim atas terjadinya poin bagi lawan',
+          'Membalas dengan permainan kasar pada reli berikutnya'
+        ],
+        answerIndex: 2,
+        explanation: 'Regulasi diri ditunjukkan dengan kemampuan mengelola emosi dan menjaga sportivitas dalam situasi tertekan sekalipun.'
+      },
+      {
+        id: 9,
+        type: 'PG',
+        level: 'Level 2 (Penerapan)',
+        tp: 'TP 2 - Profil Pelajar Pancasila',
+        text: 'Saat praktik permainan softball, rekan satu tim Anda gagal menangkap bola mudah sehingga tim lawan berhasil mencetak angka dan teman Anda tampak murung serta kehilangan percaya diri. Sikap yang mencerminkan nilai kepedulian adalah ....',
+        options: [
+          'Meminta guru segera mengganti teman tersebut dengan pemain cadangan',
+          'Menegurnya di depan seluruh kelas agar ia tidak mengulangi kesalahan',
+          'Mendekati, memberikan semangat, serta mengingatkan kembali posisi siap tanpa menyalahkan',
+          'Mengabaikannya dan mengambil alih seluruh area penjagaannya sendirian',
+          'Menertawakan kesalahannya agar suasana lapangan terasa santai'
+        ],
+        answerIndex: 2,
+        explanation: 'Kepedulian sosial dalam olahraga diwujudkan melalui empati, dukungan moril, dan komunikasi positif saat rekan mengalami kesulitan.'
+      },
+      {
+        id: 10,
+        type: 'PG',
+        level: 'Level 2 (Penerapan)',
+        tp: 'TP 2 - Profil Pelajar Pancasila',
+        text: 'Dalam kelompok latihan praktik bulu tangkis, terdapat satu anggota kelompok yang belum menguasai teknik memegang raket dan pukulan servis dengan baik. Penerapan kolaborasi yang tepat dalam kelompok tersebut adalah ....',
+        options: [
+          'Membiarkannya berlatih sendiri di pinggir lapangan agar tidak menghambat kelompok',
+          'Membagi waktu latihan untuk saling mengoreksi dan memberi umpan shuttlecock secara bertahap hingga ia menguasai gerakan',
+          'Menyuruhnya hanya bertugas mencatat skor pertandingan anggota lain',
+          'Melaporkan kepada guru bahwa kelompok tidak bisa dinilai karena satu anggota kurang terampil',
+          'Memaksanya langsung bertanding dengan tempo cepat tanpa latihan dasar'
+        ],
+        answerIndex: 1,
+        explanation: 'Kolaborasi dan kepedulian mendorong tutor sebaya (peer teaching) sehingga seluruh anggota kelompok berkembang bersama.'
+      },
+      {
+        id: 11,
+        type: 'PG',
+        level: 'Level 3 (Penalaran/HOTS)',
+        tp: 'TP 2 - Profil Pelajar Pancasila',
+        text: 'Pada pertandingan ganda bulu tangkis antarkelas, pasangan Andi dan Budi sering bertabrakan dan kehilangan poin karena Andi selalu berusaha mengambil semua shuttlecock termasuk di area Budi. Jika Anda menjadi kapten tim, analisis akar masalah dan solusi berbasis nilai gerak yang paling tepat adalah ....',
+        options: [
+          'Akar masalahnya adalah kurangnya stamina Budi; solusinya Andi harus bermain lebih cepat lagi',
+          'Akar masalahnya adalah rendahnya komunikasi dan kesadaran peran; solusinya menyepakati pembagian area lapangan dan saling memberi kode suara saat bermain',
+          'Akar masalahnya adalah kualitas raket yang berbeda; solusinya menukar raket kedua pemain',
+          'Akar masalahnya adalah aturan pertandingan yang terlalu ketat; solusinya meminta wasit mengulang poin',
+          'Akar masalahnya adalah Andi terlalu berbakat; solusinya Budi cukup berdiri diam di sudut belakang'
+        ],
+        answerIndex: 1,
+        explanation: 'Permainan ganda menuntut kesadaran diri atas batas area tugas dan komunikasi aktif (kolaborasi) agar tidak terjadi tumpang tindih posisi.'
+      },
+
+      // --- TP 3 & TP 5: POLA PERILAKU HIDUP SEHAT - 6 SOAL PG ---
+      {
+        id: 12,
+        type: 'PG',
+        level: 'Level 1 (Pemahaman)',
+        tp: 'TP 3 & 5 - Pola Perilaku Hidup Sehat',
+        text: 'Pola perilaku hidup sehat bagi peserta didik SMK mencakup keseimbangan antara berbagai aspek berikut, KECUALI ....',
+        options: [
+          'Konsumsi makanan bergizi seimbang dan air putih yang cukup',
+          'Aktivitas fisik atau olahraga teratur minimal 30-60 menit per hari',
+          'Istirahat dan tidur berkualitas sesuai kebutuhan usia remaja',
+          'Konsumsi minuman berenergi tinggi kafein setiap malam untuk begadang',
+          'Menjaga kebersihan diri (personal hygiene) dan lingkungan sekitar'
+        ],
+        answerIndex: 3,
+        explanation: 'Konsumsi minuman tinggi kafein dan begadang merusak sistem metabolisme, jantung, dan kualitas pemulihan tubuh.'
+      },
+      {
+        id: 13,
+        type: 'PG',
+        level: 'Level 1 (Pemahaman)',
+        tp: 'TP 3 & 5 - Pola Perilaku Hidup Sehat',
+        text: 'Zat gizi makro yang berperan utama sebagai sumber energi cepat saat siswa melakukan aktivitas olahraga intensitas sedang hingga tinggi seperti bulu tangkis dan softball adalah ....',
+        options: [
+          'Karbohidrat kompleks',
+          'Vitamin D dan K',
+          'Mineral kalsium',
+          'Serat kasar tidak larut',
+          'Zat besi'
+        ],
+        answerIndex: 0,
+        explanation: 'Karbohidrat diubah menjadi glukosa dan glikogen otot yang menjadi bahan bakar utama kontraksi otot saat berolahraga.'
+      },
+      {
+        id: 14,
+        type: 'PG',
+        level: 'Level 1 (Pemahaman)',
+        tp: 'TP 3 & 5 - Pola Perilaku Hidup Sehat',
+        text: 'Durasi tidur malam yang direkomendasikan bagi remaja usia 15–18 tahun (siswa SMK) agar proses pemulihan jaringan otot dan konsentrasi belajar tetap optimal adalah ....',
+        options: [
+          '3 – 4 jam per malam',
+          '5 – 6 jam per malam',
+          '8 – 10 jam per malam',
+          '12 – 14 jam per malam',
+          'Tidak perlu tidur malam jika sudah tidur siang 1 jam'
+        ],
+        answerIndex: 2,
+        explanation: 'Menurut standar kesehatan remaja, kebutuhan tidur ideal adalah 8–10 jam per hari untuk regenerasi sel dan menjaga kebugaran.'
+      },
+      {
+        id: 15,
+        type: 'PG',
+        level: 'Level 2 (Penerapan)',
+        tp: 'TP 3 & 5 - Pola Perilaku Hidup Sehat',
+        text: 'Sebagai siswa SMK yang memiliki jadwal pembelajaran teori dan praktik bengkel/laboratorium hingga sore hari, strategi penerapan aktivitas fisik yang paling realistis dan konsisten adalah ....',
+        options: [
+          'Berolahraga berat selama 4 jam penuh hanya pada hari Minggu saja',
+          'Melakukan peregangan di sela jam praktik serta berolahraga aerobik/permainan 3–4 kali seminggu selama 30–45 menit',
+          'Menghindari semua aktivitas fisik di luar jam pelajaran PJOK agar tidak lelah',
+          'Berlari maraton setiap tengah malam setelah selesai mengerjakan tugas',
+          'Mengganti aktivitas fisik dengan bermain gim daring selama 3 jam setiap sore'
+        ],
+        answerIndex: 1,
+        explanation: 'Aktivitas fisik moderat teratur (3-5 kali seminggu, 30-45 menit) jauh lebih aman dan efektif menjaga kebugaran dibanding olahraga ekstrem sekali seminggu.'
+      },
+      {
+        id: 16,
+        type: 'PG',
+        level: 'Level 2 (Penerapan)',
+        tp: 'TP 3 & 5 - Pola Perilaku Hidup Sehat',
+        text: 'Setelah selesai mengikuti praktik olahraga dengan keringat berlebih, tindakan perilaku hidup bersih dan sehat (PHBS) yang wajib segera dilakukan siswa adalah ....',
+        options: [
+          'Langsung berbaring di lantai kelas yang dingin tanpa mengganti pakaian',
+          'Melakukan pendinginan (cooling down), minum air putih secukupnya, mandi, dan mengganti pakaian olahraga dengan seragam bersih',
+          'Mengeringkan keringat menggunakan baju yang sedang dipakai lalu menyimpannya di dalam tas',
+          'Segera minum air es dalam jumlah sangat banyak sekaligus saat napas masih terengah-engah',
+          'Menyemprotkan parfum ke seluruh pakaian olahraga tanpa perlu mencucinya'
+        ],
+        answerIndex: 1,
+        explanation: 'Cooling down menormalkan denyut nadi, rehidrasi mengganti cairan tubuh, dan mandi/ganti baju mencegah infeksi jamur kulit maupun masuk angin.'
+      },
+      {
+        id: 17,
+        type: 'PG',
+        level: 'Level 3 (Penalaran/HOTS)',
+        tp: 'TP 3 & 5 - Pola Perilaku Hidup Sehat',
+        text: 'Dimas sering mengalami pusing, kram otot saat praktik PJOK, dan mengantuk di kelas. Hasil pengamatan menunjukkan Dimas terbiasa tidur pukul 02.00 dini hari karena gawai, jarang minum air putih, dan selalu sarapan gorengan serta minuman bersoda. Analisis penyebab utama kondisi Dimas dan solusi prioritasnya adalah ....',
+        options: [
+          'Dimas kekurangan lemak jenuh; solusinya menambah porsi gorengan sebelum berolahraga',
+          'Dimas mengalami dehidrasi, defisit tidur, dan ketidakseimbangan gizi; solusinya memperbaiki jam tidur, mencukupi hidrasi air mineral, serta beralih ke gizi seimbang',
+          'Dimas terlalu banyak berolahraga; solusinya meminta surat izin tidak mengikuti praktik PJOK selama satu semester',
+          'Dimas mengalami kelebihan vitamin; solusinya berpuasa minum air selama aktivitas fisik',
+          'Dimas hanya membutuhkan suplemen peninggi badan tanpa mengubah pola tidur'
+        ],
+        answerIndex: 1,
+        explanation: 'Kram otot dan pusing dipicu dehidrasi serta kelelahan saraf akibat begadang dan rendahnya mikronutrien/air mineral.'
+      },
+
+      // --- TP 6: KONSEP & TEKNIK DASAR SOFTBALL - 4 SOAL PG ---
+      {
+        id: 18,
+        type: 'PG',
+        level: 'Level 1 (Pemahaman)',
+        tp: 'TP 6 - Konsep Dasar Softball',
+        text: 'Permainan softball dimainkan oleh dua regu yang masing-masing berjumlah 9 pemain inti di lapangan berbentuk bujur sangkar (diamond). Pemain yang bertugas melambungkan bola kepada pemukul (batter) disebut ....',
+        options: [
+          'Catcher',
+          'Shortstop',
+          'Pitcher',
+          'Outfielder',
+          'First baseman'
+        ],
+        answerIndex: 2,
+        explanation: 'Pitcher adalah pelambung bola yang berdiri di pitcher’s plate, sedangkan catcher adalah penangkap bola di belakang home plate.'
+      },
+      {
+        id: 19,
+        type: 'PG',
+        level: 'Level 1 (Pemahaman)',
+        tp: 'TP 6 - Konsep Dasar Softball',
+        text: 'Dalam peraturan permainan softball, apabila seorang pemukul (batter) gagal memukul bola sah yang dilempar pitcher ke dalam zona pukulan (strike zone) sebanyak 3 kali, maka keputusan wasit (umpire) adalah ....',
+        options: [
+          'Batter mendapatkan free walk ke base pertama',
+          'Batter dinyatakan strike out (mati)',
+          'Regu penjaga langsung berganti menjadi regu pemukul',
+          'Permainan dihentikan untuk pergantian inning',
+          'Batter mendapatkan tambahan 2 kali kesempatan memukul'
+        ],
+        answerIndex: 1,
+        explanation: 'Tiga kali strike menyebabkan batter dinyatakan strike out (1 out). Tiga kali out dalam satu tim akan menukar posisi regu bertahan dan menyerang.'
+      },
+      {
+        id: 20,
+        type: 'PG',
+        level: 'Level 1 (Pemahaman)',
+        tp: 'TP 6 - Teknik Dasar Softball',
+        text: 'Teknik melempar bola dalam permainan softball yang dilakukan dengan ayunan lengan dari atas kepala dan digunakan untuk lemparan jarak jauh dengan kecepatan tinggi disebut ....',
+        options: [
+          'Underhand throw',
+          'Sidearm throw',
+          'Overhand throw',
+          'Chest pass',
+          'Pitching windmill'
+        ],
+        answerIndex: 2,
+        explanation: 'Overhand throw (lemparan atas) menghasilkan lintasan bola lurus, kuat, dan akurat untuk jarak menengah hingga jauh.'
+      },
+      {
+        id: 21,
+        type: 'PG',
+        level: 'Level 1 (Pemahaman)',
+        tp: 'TP 6 - Teknik Dasar Softball',
+        text: 'Teknik memukul bola tanpa ayunan penuh (hanya menahan/menyetuh bola dengan bat agar jatuh pelan di sekitar area infield) dalam permainan softball disebut ....',
+        options: [
+          'Full swing',
+          'Home run',
+          'Bunt (pukulan tumbuk)',
+          'Fly ball',
+          'Sliding'
+        ],
+        answerIndex: 2,
+        explanation: 'Bunt adalah teknik pukulan taktis dengan menggeser posisi tangan pada bat untuk menjatuhkan bola pelan di dalam lapangan.'
+      },
+
+      // --- TP 4: KETERAMPILAN GERAK FUNGSIONAL SOFTBALL - 9 SOAL PG ---
+      {
+        id: 22,
+        type: 'PG',
+        level: 'Level 2 (Penerapan)',
+        tp: 'TP 4 - Keterampilan Gerak Softball',
+        text: 'Saat bola dipukul melambung tinggi ke arah Anda (fly ball), posisi sarung tangan (glove) dan tubuh yang benar saat menangkap bola adalah ....',
+        options: [
+          'Jari-jari glove menghadap ke bawah menyentuh tanah dengan posisi berlutut',
+          'Jari-jari glove menghadap ke atas di depan dahi/dada, bola ditangkap dengan dua tangan disertai gerakan menarik sedikit ke belakang untuk meredam benturan',
+          'Menangkap bola hanya dengan satu tangan di samping pinggang sambil berlari membelakangi bola',
+          'Menutup mata sesaat sebelum bola menyentuh permukaan glove',
+          'Menahan bola menggunakan dada terlebih dahulu baru diambil dengan tangan'
+        ],
+        answerIndex: 1,
+        explanation: 'Untuk bola di atas pinggang (fly ball), jari glove mengarah ke atas, tangan bebas menutup bola agar tidak memantul keluar, dan siku mengeper.'
+      },
+      {
+        id: 23,
+        type: 'PG',
+        level: 'Level 2 (Penerapan)',
+        tp: 'TP 4 - Keterampilan Gerak Softball',
+        text: 'Seorang penjaga lapangan dalam (infielder) baru saja mengambil bola menyusur tanah (ground ball) dalam posisi tubuh masih membungkuk dan harus segera mengoper bola ke base kedua dalam jarak dekat. Teknik lemparan yang paling efisien diterapkan adalah ....',
+        options: [
+          'Overhand throw dengan awalan melompat tinggi',
+          'Sidearm throw atau underhand toss dengan ayunan cepat dan akurat',
+          'Lemparan melambung tinggi ke udara hingga mendekati pagar luar',
+          'Berlari membawa bola sendiri sambil menyentuh semua pelari',
+          'Melempar bola dengan membelakangi arah base kedua'
+        ],
+        answerIndex: 1,
+        explanation: 'Sidearm atau underhand toss memungkinkan pelepasan bola (quick release) secara cepat pada jarak dekat tanpa harus berdiri tegak penuh.'
+      },
+      {
+        id: 24,
+        type: 'PG',
+        level: 'Level 2 (Penerapan)',
+        tp: 'TP 4 - Keterampilan Gerak Softball',
+        text: 'Agar pukulan ayun (swing) dalam softball menghasilkan tenaga maksimal dan arah bola terkontrol, urutan koordinasi gerak yang harus dilakukan pemukul adalah ....',
+        options: [
+          'Memukul dengan kekuatan lengan saja tanpa menggerakkan pinggul dan kaki',
+          'Melangkahkan kaki depan (stride), memutar pinggul dan bahu, mengayunkan bat sejajar lintasan bola, serta melakukan gerak lanjut (follow through)',
+          'Menarik tubuh ke belakang sambil menutup pandangan dari arah datangnya bola',
+          'Mengayunkan bat dari atas ke bawah secara vertikal seperti membelah kayu',
+          'Melepaskan pegangan tangan kanan sesaat sebelum bat menyentuh bola'
+        ],
+        answerIndex: 1,
+        explanation: 'Tenaga pukulan softball berasal dari rantai kinetik: tolakan kaki, rotasi pinggul, bahu, ayunan lengan, dan follow through.'
+      },
+      {
+        id: 25,
+        type: 'PG',
+        level: 'Level 2 (Penerapan)',
+        tp: 'TP 4 - Keterampilan Gerak Softball',
+        text: 'Setelah memukul bola ke arah infield, seorang pelari (batter-runner) berlari secepat mungkin menuju base pertama. Teknik berlari melewati base pertama yang diperbolehkan aturan dan paling efektif adalah ....',
+        options: [
+          'Melompat jauh dengan kedua kaki sebelum menginjak base pertama',
+          'Mengurangi kecepatan 3 meter sebelum base agar bisa berhenti tepat di atas base',
+          'Berlari lurus penuh menginjak base pertama lalu terus melewati base (overrun) dan berbelok ke arah luar (foul territory)',
+          'Berlari melewati base pertama lalu langsung berbelok ke arah base kedua tanpa melihat bola',
+          'Melakukan sliding kepala terlebih dahulu (head-first slide) pada setiap lari ke base pertama'
+        ],
+        answerIndex: 2,
+        explanation: 'Pelari diperbolehkan berlari lurus melewati base 1 tanpa dinyatakan out asalkan berbelok ke kanan (luar lapangan) dan tidak berusaha ke base 2.'
+      },
+      {
+        id: 26,
+        type: 'PG',
+        level: 'Level 2 (Penerapan)',
+        tp: 'TP 4 - Keterampilan Gerak Softball',
+        text: 'Ketika pelari mendekati base kedua dan bola sudah berada di tangan penjaga base yang bersiap menyentuhkan bola (tag), teknik gerak fungsional yang paling tepat dilakukan pelari adalah ....',
+        options: [
+          'Berhenti mendadak di depan penjaga sambil mengangkat kedua tangan',
+          'Melakukan sliding (menjatuhkan badan meluncur menyentuh base dengan kaki/tangan) untuk memperkecil bidang sentuh',
+          'Menabrak penjaga base agar bola terlepas dari sarung tangannya',
+          'Berlari keluar garis batas lari sejauh 4 meter untuk menghindari penjaga',
+          'Berbalik arah berlari kembali menuju base pertama dengan santai'
+        ],
+        answerIndex: 1,
+        explanation: 'Sliding bertujuan menghentikan laju tanpa mengurangi kecepatan awal serta menghindari jangkauan tag dari penjaga base.'
+      },
+      {
+        id: 27,
+        type: 'PG',
+        level: 'Level 3 (Penalaran/HOTS)',
+        tp: 'TP 4 - Evaluasi Gerak Memukul Softball',
+        text: 'Dalam latihan memukul, seorang siswa pemukul tangan kanan selalu menghasilkan bola melambung tinggi ke belakang sisi kanan (foul ball) setiap kali pitcher melempar bola cepat. Berdasarkan analisis biomekanika gerak, kesalahan yang terjadi adalah ....',
+        options: [
+          'Ayunan bat terlalu cepat sehingga bola terpukul jauh ke sisi kiri lapangan',
+          'Ayunan bat terlambat (late swing) dan siku belakang turun terlalu rendah sehingga perkenaan bola terjadi di belakang titik ideal',
+          'Posisi berdiri terlalu dekat dengan home plate sehingga bola mengenai badan',
+          'Pemukul menggunakan bat yang terlalu pendek sehingga tidak menjangkau bola',
+          'Pandangan mata terlalu fokus mengikuti bola hingga menyentuh bat'
+        ],
+        answerIndex: 1,
+        explanation: 'Pada pemukul tangan kanan, ayunan yang terlambat membuat bidang bat masih terbuka ke kanan sehingga bola terdorong ke belakang kanan (foul).'
+      },
+      {
+        id: 28,
+        type: 'PG',
+        level: 'Level 3 (Penalaran/HOTS)',
+        tp: 'TP 4 - Evaluasi Gerak Menangkap Softball',
+        text: 'Seorang penjaga lapangan sering gagal menangkap bola menyusur tanah (ground ball) karena bola memantul keluar setelah mengenai telapak glove-nya. Evaluasi perbaikan teknik yang harus dilakukan pemain tersebut adalah ....',
+        options: [
+          'Menegakkan lutut agar posisi pandangan lebih tinggi dari permukaan tanah',
+          'Merendahkan pinggul hingga ujung glove menyentuh tanah, menggunakan tangan bebas menutup bola (alligator trap), dan menarik glove sedikit ke arah tubuh saat bola masuk',
+          'Menahan bola dengan posisi jari glove menghadap lurus ke langit',
+          'Menendang bola terlebih dahulu untuk mengurangi kecepatannya',
+          'Menunggu bola berhenti sendiri sebelum mengambilnya dengan tangan kosong'
+        ],
+        answerIndex: 1,
+        explanation: 'Teknik menangkap ground ball membutuhkan posisi rendah (glove menyentuh tanah) serta peredaman (soft hands) dengan menutup bola memakai tangan bebas.'
+      },
+      {
+        id: 29,
+        type: 'PG',
+        level: 'Level 3 (Penalaran/HOTS)',
+        tp: 'TP 6 & 4 - Taktik Berlari Base Softball',
+        text: 'Situasi permainan menunjukkan sudah terjadi 1 out dengan pelari berada di base pertama. Pemukul berikutnya memukul bola melambung tinggi (fly ball) ke arah penjaga luar (outfielder). Keputusan gerak taktis yang paling aman bagi pelari di base pertama adalah ....',
+        options: [
+          'Langsung berlari sekuat tenaga menuju base ketiga tanpa memperhatikan bola',
+          'Berlari setengah jarak menuju base kedua (halfway); jika bola tertangkap segera kembali menginjak base 1 (tag up), jika bola jatuh segera lanjut berlari ke base 2',
+          'Tetap duduk di atas base pertama hingga permainan selesai',
+          'Berlari kembali ke home plate untuk mencetak angka lebih dulu',
+          'Mengganggu pandangan outfielder agar bola tidak tertangkap'
+        ],
+        answerIndex: 1,
+        explanation: 'Dengan 1 out, strategi halfway mencegah double play jika bola tertangkap sekaligus memberi keuntungan jarak jika bola gagal ditangkap.'
+      },
+      {
+        id: 30,
+        type: 'PG',
+        level: 'Level 3 (Penalaran/HOTS)',
+        tp: 'TP 4 - Kreativitas Gerak Softball',
+        text: 'Saat jam praktik PJOK, jumlah bat standar dan bola softball kulit terbatas sementara jumlah siswa dalam satu kelas ada 36 orang. Rancangan modifikasi aktivitas pembelajaran yang paling kreatif, aman, dan tetap melatih keterampilan gerak fungsional softball adalah ....',
+        options: [
+          'Membatalkan materi softball dan menggantinya dengan duduk mencatat peraturan di kelas',
+          'Membuat pos latihan sirkuit menggunakan bola karet/tenis dan pemukul modifikasi (paralon berlapis busa/kayu ringan) untuk latihan lempar-tangkap dan memukul berpasangan',
+          'Meminta 32 siswa menonton saja sementara 4 siswa bergantian memakai alat standar selama 2 jam',
+          'Menggunakan batu yang dibungkus kertas sebagai pengganti bola softball untuk dilempar keras',
+          'Hanya melatih lari keliling lapangan tanpa ada aktivitas melempar, menangkap, maupun memukul'
+        ],
+        answerIndex: 1,
+        explanation: 'Modifikasi sarana dengan bola lunak/karet dan pemukul aman dalam sistem pos meningkatkan waktu aktif belajar (active learning time) dan keselamatan siswa.'
+      },
+
+      // --- 5 SOAL ESSAY (URAIAN) SESUAI KISI-KISI ---
+      {
+        id: 31,
+        type: 'ESSAY',
+        level: 'Level 1 (Pemahaman)',
+        tp: 'TP 1 - Bulu Tangkis (Grip & Stance)',
+        text: 'Jelaskan perbedaan cara memegang raket teknik forehand grip dan backhand grip pada permainan bulu tangkis, serta uraikan mengapa posisi berdiri siap (ready stance) sangat menentukan keberhasilan mengembalikan pukulan lawan!',
+        guide: '1) Forehand grip: raket dipegang seperti berjabat tangan, pangkal ibu jari dan telunjuk membentuk huruf V di sisi sempit gagang raket. 2) Backhand grip: gagang raket diputar sedikit ke dalam dan ibu jari menekan permukaan lebar gagang raket sebagai tumpuan tenaga. 3) Pentingnya ready stance: menjaga keseimbangan dinamis (lutut ditekuk, tumpuan di ujung kaki, raket di depan dada) sehingga pemain dapat bergerak eksplosif ke segala sudut lapangan dan cepat merespons arah shuttlecock.',
+        rubric: 'Skor 90-100: Menjelaskan kedua teknik grip dengan akurat beserta posisi jari, serta menguraikan fungsi ready stance secara lengkap. Skor 70-89: Menjelaskan kedua grip dan fungsi stance dengan cukup tepat namun kurang detail. Skor 50-69: Hanya menjelaskan sebagian konsep dengan benar. Skor <50: Jawaban kurang relevan atau tidak lengkap.'
+      },
+      {
+        id: 32,
+        type: 'ESSAY',
+        level: 'Level 1 (Pemahaman)',
+        tp: 'TP 6 - Konsep & Teknik Dasar Softball',
+        text: 'Sebutkan dan jelaskan 3 teknik dasar utama dalam permainan softball (melempar, menangkap, dan memukul bola) beserta fungsi masing-masing teknik tersebut dalam situasi permainan!',
+        guide: '1) Melempar bola (overhand, sidearm, underhand): berfungsi mengoper bola antarpenjaga dengan cepat dan akurat untuk mematikan pelari (force out/tag out) atau melakukan pitching. 2) Menangkap bola (ground ball, straight ball, fly ball): berfungsi menguasai bola hasil pukulan lawan maupun operan teman menggunakan glove agar bola tidak lepas dan segera dapat dilempar kembali. 3) Memukul bola (swing dan bunt): berfungsi memulai serangan regu pemukul dengan menempatkan bola ke area sah lapangan agar pelari dapat berpindah base dan mencetak angka (run).',
+        rubric: 'Skor 90-100: Menyebutkan dan menjelaskan ketiga teknik dasar beserta variasi dan fungsinya dalam permainan dengan sangat tepat. Skor 70-89: Menjelaskan ketiga teknik dasar dengan benar namun contoh fungsinya singkat. Skor 50-69: Hanya menjelaskan 2 teknik dengan tepat. Skor <50: Jawaban sangat minim.'
+      },
+      {
+        id: 33,
+        type: 'ESSAY',
+        level: 'Level 2 (Penerapan)',
+        tp: 'TP 4 - Evaluasi Gerak Fungsional Softball',
+        text: 'Dalam latihan praktik softball, teman Anda sering melempar bola melambung jauh di atas kepala penjaga base pertama dan berlari lambat menuju base karena selalu menoleh ke belakang melihat arah bola. Berikan langkah-langkah evaluasi dan perbaikan gerak untuk mengatasi kedua masalah tersebut!',
+        guide: '1) Perbaikan lemparan melambung: perbaiki titik pelepasan bola (release point) agar tidak terlalu awal/di atas kepala, arahkan pandangan dan langkah kaki depan (follow through) lurus ke dada target penjaga base, serta gunakan mekanika overhand throw yang terkontrol. 2) Perbaikan lari ke base: fokuskan pandangan lurus ke depan menuju base pertama (jangan menoleh ke belakang karena mengurangi kecepatan lari), ayunkan lengan secara eksplosif, dan berlari lurus melewati base pertama (overrun) dengan kecepatan penuh.',
+        rubric: 'Skor 90-100: Mampu mengevaluasi penyebab dan memberikan langkah perbaikan teknis yang konkret untuk masalah lemparan maupun lari ke base. Skor 70-89: Memberikan solusi perbaikan untuk kedua masalah namun penjelasan mekanikanya cukup singkat. Skor 50-69: Hanya memberikan solusi pada satu masalah saja. Skor <50: Jawaban tidak menyentuh perbaikan teknik.'
+      },
+      {
+        id: 34,
+        type: 'ESSAY',
+        level: 'Level 2 (Penerapan)',
+        tp: 'TP 3 & 5 - Penerapan Pola Hidup Sehat',
+        text: 'Susunlah rencana penerapan pola perilaku hidup sehat dalam rutinitas harian Anda sebagai siswa SMK (meliputi pengaturan pola makan/hidrasi, aktivitas fisik, waktu istirahat, dan kebersihan diri) agar kebugaran tubuh tetap terjaga!',
+        guide: 'Rencana harian terstruktur: 1) Pola makan & hidrasi: sarapan bergizi seimbang (karbohidrat kompleks, protein, sayur/buah) sebelum ke sekolah, mengurangi jajanan tinggi gula/lemak jenuh, serta minum air putih minimal 8 gelas (2 liter) sehari. 2) Aktivitas fisik: melakukan peregangan ringan di sela jam pelajaran/praktik dan berolahraga rutin minimal 30-45 menit sebanyak 3-4 kali seminggu. 3) Istirahat: membatasi penggunaan gawai di malam hari dan tidur teratur 8 jam per malam (misalnya pukul 21.30–05.30). 4) Kebersihan diri: mandi dua kali sehari, segera mengganti pakaian berkeringat setelah olahraga, dan menjaga kebersihan tangan.',
+        rubric: 'Skor 90-100: Menyusun rencana konkret dan realistis yang mencakup keempat aspek (gizi/hidrasi, aktivitas fisik, istirahat, dan kebersihan diri). Skor 70-89: Mencakup 3-4 aspek dengan rencana yang cukup baik. Skor 50-69: Hanya mencakup 2 aspek secara umum. Skor <50: Rencana tidak terstruktur.'
+      },
+      {
+        id: 35,
+        type: 'ESSAY',
+        level: 'Level 3 (Penalaran/HOTS)',
+        tp: 'TP 2 - Profil Pelajar Pancasila (Analisis Kasus)',
+        text: 'Studi Kasus: Pada pertandingan praktik bulu tangkis ganda, pasangan siswa A dan B saling menyalahkan ketika poin tertinggal jauh. Siswa A bermain egois tanpa memberi ruang pukulan, sedangkan Siswa B tampak kesal dan enggan mengejar shuttlecock yang jatuh di dekatnya. Analisislah permasalahan tersebut dan rumuskan solusi nyata berdasarkan nilai-nilai Profil Pelajar Pancasila (kolaborasi, kepedulian, dan kesadaran diri)!',
+        guide: '1) Analisis Masalah: Terjadi kegagalan regulasi emosi (kesadaran diri rendah), hilangnya empati antarrekan (kepedulian rendah), dan tidak berjalannya komunikasi serta pembagian peran lapangan (kolaborasi terhambat) sehingga performa tim menurun drastis. 2) Solusi Nilai Gerak: a) Kesadaran Diri: kedua siswa mengambil jeda napas sejenak untuk mengendalikan emosi, mengakui kesalahan masing-masing tanpa mencari kambing hitam. b) Kepedulian: saling memberi dukungan verbal positif (tos/kata penyemangat) saat teman melakukan kesalahan. c) Kolaborasi: menyepakati kembali pembagian area permainan (rotasi depan-belakang/kiri-kanan) dan aktif berkomunikasi ("saya", "kamu", "out") selama reli berlangsung.',
+        rubric: 'Skor 90-100: Menganalisis akar masalah psikologis/tim secara tajam dan merumuskan solusi operasional yang mengintegrasikan ketiga nilai (kolaborasi, kepedulian, kesadaran diri). Skor 70-89: Analisis baik dan mencakup sebagian besar nilai P3 dengan solusi cukup konkret. Skor 50-69: Hanya memberikan saran umum tanpa mengaitkan ketiga dimensi nilai gerak. Skor <50: Jawaban dangkal.'
+      }
+    ];
+
+    /* ========================================================================
+       2. KONFIGURASI DEFAULT & MANAJEMEN STATE LOCALSTORAGE
+       ======================================================================== */
+    const STORAGE_KEYS = {
+      SETTINGS: 'sas_pjok_2026_settings',
+      QUESTIONS: 'sas_pjok_2026_questions',
+      RESULTS: 'sas_pjok_2026_results',
+      REGISTERED: 'sas_pjok_2026_registered',
+      ACTIVE_EXAM: 'sas_pjok_2026_active_exam'
+    };
+
+    const DEFAULT_SETTINGS = {
+      schoolName: 'SMK Waliwa Laimu',
+      schoolLogo: '',
+      teacherName: 'Abd. Rahman Welemuly, S.Pd.',
+      subjectName: 'Pendidikan Jasmani, Olahraga dan Kesehatan (PJOK)',
+      className: 'Kelas X / Fase E',
+      academicYear: '2026/2027 (Ganjil)',
+      examDate: '27 November 2026',
+      durationMinutes: 120,
+      weightPG: 70,
+      weightEssay: 30,
+      kkm: 70,
+      shuffleQuestions: true,
+      shuffleOptions: true,
+      showResultToStudent: true,
+      adminPassword: 'pjok2026'
+    };
+
+    let appSettings = { ...DEFAULT_SETTINGS };
+    let appQuestions = [];
+    let examResults = [];
+    let registeredStudents = [];
+    let activeExam = null;
+    let timerInterval = null;
+    let isAdminLoggedIn = false;
+    let isExamScreenLocked = false;
+    let alarmAudioCtx = null;
+    let alarmInterval = null;
+
+    /* ========================================================================
+       3. INISIALISASI & PENYIMPANAN LOKAL (LOCALSTORAGE)
+       ======================================================================== */
+    function initApp() {
+      try {
+        const savedSettings = localStorage.getItem(STORAGE_KEYS.SETTINGS);
+        if (savedSettings) {
+          appSettings = { ...DEFAULT_SETTINGS, ...JSON.parse(savedSettings) };
+        } else {
+          appSettings = { ...DEFAULT_SETTINGS };
+        }
+
+        const savedQuestions = localStorage.getItem(STORAGE_KEYS.QUESTIONS);
+        if (savedQuestions) {
+          appQuestions = JSON.parse(savedQuestions);
+        } else {
+          appQuestions = JSON.parse(JSON.stringify(DEFAULT_QUESTIONS));
+        }
+
+        const savedResults = localStorage.getItem(STORAGE_KEYS.RESULTS);
+        examResults = savedResults ? JSON.parse(savedResults) : [];
+
+        const savedReg = localStorage.getItem(STORAGE_KEYS.REGISTERED);
+        registeredStudents = savedReg ? JSON.parse(savedReg) : [];
+      } catch (err) {
+        console.error('Gagal memuat LocalStorage:', err);
+        appSettings = { ...DEFAULT_SETTINGS };
+        appQuestions = JSON.parse(JSON.stringify(DEFAULT_QUESTIONS));
+      }
+
+      saveAllToStorage();
+      applySettingsToUI();
+      checkPendingExamSession();
+      populateStudentDropdowns();
+      refreshDashboard();
+    }
+
+    function saveAllToStorage() {
+      localStorage.setItem(STORAGE_KEYS.SETTINGS, JSON.stringify(appSettings));
+      localStorage.setItem(STORAGE_KEYS.QUESTIONS, JSON.stringify(appQuestions));
+      localStorage.setItem(STORAGE_KEYS.RESULTS, JSON.stringify(examResults));
+      localStorage.setItem(STORAGE_KEYS.REGISTERED, JSON.stringify(registeredStudents));
+    }
+
+    function applySettingsToUI() {
+      document.getElementById('hdr-school-name').textContent = appSettings.schoolName.toUpperCase();
+      document.getElementById('hdr-app-subtitle').textContent = `SAS Ganjil PJOK ${appSettings.className} • TP ${appSettings.academicYear}`;
+      const heroSchoolEl = document.getElementById('hero-school-label');
+      if (heroSchoolEl) heroSchoolEl.textContent = appSettings.schoolName.toUpperCase();
+      document.getElementById('hero-mapel').textContent = appSettings.subjectName;
+      document.getElementById('beranda-sekolah').textContent = appSettings.schoolName;
+      document.getElementById('beranda-guru').textContent = appSettings.teacherName;
+      document.getElementById('beranda-kelas').textContent = appSettings.className;
+      document.getElementById('beranda-tahun').textContent = appSettings.academicYear;
+      document.getElementById('beranda-tanggal').textContent = appSettings.examDate || '27 November 2026';
+
+      renderSchoolLogos();
+
+      const pgCount = appQuestions.filter(q => q.type === 'PG').length;
+      const essayCount = appQuestions.filter(q => q.type === 'ESSAY').length;
+      document.getElementById('beranda-durasi').textContent = `${appSettings.durationMinutes} Menit • ${appQuestions.length} Soal (${pgCount} PG + ${essayCount} Essay)`;
+      document.getElementById('intro-duration-text').textContent = `${appSettings.durationMinutes} menit`;
+
+      // Helper aman untuk mengisi input pengaturan admin
+      const setVal = (id, val) => {
+        const el = document.getElementById(id);
+        if (el) el.value = val;
+      };
+
+      // Isi form pengaturan admin
+      setVal('set-sekolah', appSettings.schoolName);
+      setVal('set-guru', appSettings.teacherName);
+      setVal('set-mapel', appSettings.subjectName);
+      setVal('set-kelas', appSettings.className);
+      setVal('set-tahun', appSettings.academicYear);
+      setVal('set-tanggal', appSettings.examDate || '27 November 2026');
+      setVal('set-durasi', appSettings.durationMinutes);
+      setVal('set-bobot-pg', appSettings.weightPG);
+      setVal('set-bobot-essay', appSettings.weightEssay);
+      setVal('set-kkm', appSettings.kkm);
+      setVal('set-acak-soal', String(appSettings.shuffleQuestions));
+      setVal('set-acak-opsi', String(appSettings.shuffleOptions));
+      setVal('set-show-result', String(appSettings.showResultToStudent));
+      setVal('set-admin-pass', appSettings.adminPassword);
+    }
+
+    function getDefaultSchoolLogoSVG(size) {
+      return `
+        <svg width="${size}" height="${size}" viewBox="0 0 200 220" fill="none">
+          <path d="M100 18C128 18 152 34 156 58V134C156 168 130 192 100 206C70 192 44 168 44 134V58C48 34 72 18 100 18Z" fill="#2196F3" stroke="#0D47A1" stroke-width="4"/>
+          <rect x="30" y="42" width="140" height="28" rx="10" fill="#FDD835" stroke="#F57F17" stroke-width="3"/>
+          <text x="100" y="60" text-anchor="middle" fill="#111111" font-family="Arial, sans-serif" font-weight="900" font-size="9.5" letter-spacing="0.2">SEKOLAH MENENGAH KEJURUAN</text>
+          <path d="M104 76C113 78 115 92 110 108C105 123 99 135 95 141C91 135 86 121 86 105C86 90 93 78 104 76Z" fill="#FBC02D" stroke="#3E2723" stroke-width="2.5"/>
+          <path d="M88 94L112 86M87 105L111 96M88 116L108 108M91 126L103 121" stroke="#3E2723" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M48 138Q66 130 84 138T120 138T152 138" stroke="#00E5FF" stroke-width="5" stroke-linecap="round" fill="none"/>
+          <path d="M52 145Q70 138 88 145T124 145T148 145" stroke="#0288D1" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <rect x="44" y="152" width="112" height="26" rx="10" fill="#FDD835" stroke="#F57F17" stroke-width="3"/>
+          <text x="100" y="169" text-anchor="middle" fill="#111111" font-family="Arial, sans-serif" font-weight="900" font-size="11.5">SMK WALIWA LAIMU</text>
+        </svg>
+      `;
+    }
+
+    function renderSchoolLogos() {
+      const logoData = appSettings.schoolLogo;
+      const hdrBox = document.getElementById('hdr-logo-box');
+      const heroBox = document.getElementById('hero-logo-box');
+      const certBox = document.getElementById('cert-logo-box');
+      const prevBox = document.getElementById('set-logo-preview');
+
+      if (logoData) {
+        if (hdrBox) hdrBox.innerHTML = `<img src="${logoData}" alt="Logo Sekolah" class="school-logo-img" />`;
+        if (heroBox) heroBox.innerHTML = `<img src="${logoData}" alt="Logo Sekolah" class="school-logo-img" />`;
+        if (certBox) certBox.innerHTML = `<img src="${logoData}" alt="Logo Sekolah" style="width:100%;height:100%;object-fit:contain;" />`;
+        if (prevBox) prevBox.innerHTML = `<img src="${logoData}" alt="Preview Logo" style="width:100%;height:100%;object-fit:contain;" />`;
+      } else {
+        if (hdrBox) hdrBox.innerHTML = getDefaultSchoolLogoSVG(42);
+        if (heroBox) heroBox.innerHTML = getDefaultSchoolLogoSVG(54);
+        if (certBox) certBox.innerHTML = getDefaultSchoolLogoSVG(70);
+        if (prevBox) prevBox.innerHTML = getDefaultSchoolLogoSVG(38);
+      }
+    }
+
+    function handleSchoolLogoUpload(e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      if (file.size > 1024 * 1024) {
+        showModal('Ukuran File Terlalu Besar', 'Gunakan file logo sekolah dengan ukuran maksimal <strong>1 MB</strong> agar penyimpanan lokal tetap ringan.');
+        e.target.value = '';
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = function (ev) {
+        appSettings.schoolLogo = ev.target.result;
+        saveAllToStorage();
+        renderSchoolLogos();
+        renderCertificate();
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function resetSchoolLogo() {
+      appSettings.schoolLogo = '';
+      const fileInput = document.getElementById('set-logo-file');
+      if (fileInput) fileInput.value = '';
+      saveAllToStorage();
+      renderSchoolLogos();
+      renderCertificate();
+    }
+
+    /* ========================================================================
+       4. NAVIGASI 6 MENU UTAMA
+       ======================================================================== */
+    function navigateTo(viewId) {
+      document.querySelectorAll('.section-view').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+
+      const targetSec = document.getElementById(viewId);
+      if (targetSec) targetSec.classList.add('active');
+
+      const targetBtn = document.querySelector(`.nav-btn[data-target="${viewId}"]`);
+      if (targetBtn) targetBtn.classList.add('active');
+
+      if (viewId === 'view-dashboard') {
+        syncTeacherAuthUI();
+        if (isAdminLoggedIn) refreshDashboard();
+      }
+      if (viewId === 'view-hasil') populateStudentDropdowns();
+      if (viewId === 'view-sertifikat') populateStudentDropdowns();
+      if (viewId === 'view-admin') {
+        syncTeacherAuthUI();
+        if (isAdminLoggedIn) renderAdminTables();
+      }
+    }
+
+    // Peringatan browser jika mencoba menutup tab saat ujian berlangsung
+    window.addEventListener('beforeunload', function (e) {
+      if (activeExam && !activeExam.submitted) {
+        e.preventDefault();
+        e.returnValue = 'Ujian sedang berlangsung. Jawaban Anda tersimpan otomatis, yakin ingin keluar?';
+      }
+    });
+
+    // Deteksi keluar dari layar/tab ujian (pindah tab, minimize, atau keluar jendela browser)
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden && activeExam && !activeExam.submitted && !isExamScreenLocked) {
+        triggerExamSecurityLock();
+      }
+    });
+
+    window.addEventListener('blur', function () {
+      if (activeExam && !activeExam.submitted && !isExamScreenLocked) {
+        triggerExamSecurityLock();
+      }
+    });
+
+    function startAlarmSound() {
+      stopAlarmSound();
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        if (!alarmAudioCtx) {
+          alarmAudioCtx = new AudioCtx();
+        }
+        if (alarmAudioCtx.state === 'suspended') {
+          alarmAudioCtx.resume();
+        }
+
+        const playBeep = () => {
+          if (!isExamScreenLocked || !alarmAudioCtx) return;
+          const osc = alarmAudioCtx.createOscillator();
+          const gain = alarmAudioCtx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(880, alarmAudioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(440, alarmAudioCtx.currentTime + 0.35);
+
+          gain.gain.setValueAtTime(0.35, alarmAudioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.01, alarmAudioCtx.currentTime + 0.38);
+
+          osc.connect(gain);
+          gain.connect(alarmAudioCtx.destination);
+          osc.start();
+          osc.stop(alarmAudioCtx.currentTime + 0.4);
+        };
+
+        playBeep();
+        alarmInterval = setInterval(playBeep, 550);
+      } catch (err) {
+        console.error('Audio alarm tidak didukung browser:', err);
+      }
+    }
+
+    function stopAlarmSound() {
+      if (alarmInterval) {
+        clearInterval(alarmInterval);
+        alarmInterval = null;
+      }
+    }
+
+    function triggerExamSecurityLock() {
+      if (!activeExam || activeExam.submitted) return;
+      isExamScreenLocked = true;
+      activeExam.isLocked = true;
+      activeExam.violations = (activeExam.violations || 0) + 1;
+      saveActiveExamState();
+
+      document.getElementById('lock-violation-count').textContent = activeExam.violations;
+      document.getElementById('unlock-pin-input').value = '';
+      document.getElementById('exam-lock-overlay').classList.add('locked');
+      startAlarmSound();
+    }
+
+    function unlockExamWithPin(e) {
+      e.preventDefault();
+      const enteredPin = document.getElementById('unlock-pin-input').value;
+      if (enteredPin === appSettings.adminPassword) {
+        isExamScreenLocked = false;
+        if (activeExam) {
+          activeExam.isLocked = false;
+          saveActiveExamState();
+        }
+        stopAlarmSound();
+        document.getElementById('exam-lock-overlay').classList.remove('locked');
+        document.getElementById('unlock-pin-input').value = '';
+      } else {
+        document.getElementById('unlock-pin-input').value = '';
+        document.getElementById('unlock-pin-input').placeholder = 'PIN Salah! Coba lagi...';
+      }
+    }
+
+    /* ========================================================================
+       5. MODAL DIALOG KUSTOM (PENGGANTI ALERT & CONFIRM)
+       ======================================================================== */
+    function showModal(title, htmlBody, buttons = [{ text: 'Tutup', class: 'btn-primary', action: closeModal }]) {
+      document.getElementById('modal-title').textContent = title;
+      document.getElementById('modal-body').innerHTML = htmlBody;
+      const actionBox = document.getElementById('modal-actions');
+      actionBox.innerHTML = '';
+
+      buttons.forEach(btnCfg => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = `btn ${btnCfg.class || 'btn-primary'}`;
+        b.textContent = btnCfg.text;
+        b.onclick = () => {
+          if (btnCfg.action) btnCfg.action();
+        };
+        actionBox.appendChild(b);
+      });
+
+      document.getElementById('custom-modal').classList.add('open');
+    }
+
+    function closeModal() {
+      document.getElementById('custom-modal').classList.remove('open');
+    }
+
+    /* ========================================================================
+       6. SISTEM UJIAN DIGITAL (CBT ENGINE, ACAK SOAL, TIMER, AUTO-SAVE)
+       ======================================================================== */
+    function shuffleArray(array) {
+      const arr = [...array];
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function checkPendingExamSession() {
+      const savedSession = localStorage.getItem(STORAGE_KEYS.ACTIVE_EXAM);
+      if (savedSession) {
+        try {
+          const parsed = JSON.parse(savedSession);
+          if (parsed && !parsed.submitted && parsed.endTime > Date.now()) {
+            document.getElementById('resume-banner').style.display = 'block';
+            document.getElementById('resume-name').textContent = `${parsed.student.name} (${parsed.student.nopes})`;
+          } else if (parsed && !parsed.submitted && parsed.endTime <= Date.now()) {
+            // Waktu sudah habis saat browser tertutup -> selesaikan otomatis
+            activeExam = parsed;
+            finalizeExamSubmission(true);
+          }
+        } catch (e) {
+          localStorage.removeItem(STORAGE_KEYS.ACTIVE_EXAM);
+        }
+      }
+    }
+
+    function resumeSavedExam() {
+      const savedSession = localStorage.getItem(STORAGE_KEYS.ACTIVE_EXAM);
+      if (!savedSession) return;
+      activeExam = JSON.parse(savedSession);
+      startExamUI();
+    }
+
+    function handleStartExam(e) {
+      e.preventDefault();
+      const name = document.getElementById('input-nama').value.trim();
+      const nisn = document.getElementById('input-nisn').value.trim();
+      const kelas = document.getElementById('input-kelas').value.trim();
+      const nopes = document.getElementById('input-nopes').value.trim();
+
+      if (!name || !nisn || !kelas || !nopes) {
+        showModal('Data Belum Lengkap', 'Harap lengkapi Nama Lengkap, NIS/NISN, Kelas, dan Nomor Peserta terlebih dahulu.');
+        return;
+      }
+
+      // Cegah pengiriman jawaban ganda untuk nomor peserta yang sudah selesai ujian
+      const alreadyDone = examResults.find(r => r.nopes.toLowerCase() === nopes.toLowerCase());
+      if (alreadyDone) {
+        showModal(
+          '⚠️ Peserta Sudah Mengikuti Ujian',
+          `Nomor Peserta <strong>${nopes}</strong> atas nama <strong>${alreadyDone.name}</strong> sudah tercatat menyelesaikan ujian ini.<br><br>Silakan buka menu <strong>Hasil Peserta</strong> untuk melihat nilai, atau hubungi Guru/Admin jika memerlukan ujian ulang.`
+        );
+        return;
+      }
+
+      // Siapkan urutan soal (PG dulu lalu Essay, masing-masing bisa diacak sesuai pengaturan)
+      let pgList = appQuestions.filter(q => q.type === 'PG');
+      let essayList = appQuestions.filter(q => q.type === 'ESSAY');
+
+      if (appSettings.shuffleQuestions) {
+        pgList = shuffleArray(pgList);
+        essayList = shuffleArray(essayList);
+      }
+
+      const combined = [...pgList, ...essayList].map(q => {
+        if (q.type === 'PG') {
+          let optionObjs = q.options.map((text, idx) => ({ text, origIdx: idx }));
+          if (appSettings.shuffleOptions) {
+            optionObjs = shuffleArray(optionObjs);
+          }
+          return {
+            id: q.id,
+            type: q.type,
+            level: q.level,
+            tp: q.tp,
+            text: q.text,
+            shuffledOptions: optionObjs,
+            answerIndex: q.answerIndex
+          };
+        } else {
+          return {
+            id: q.id,
+            type: q.type,
+            level: q.level,
+            tp: q.tp,
+            text: q.text
+          };
+        }
+      });
+
+      const durationMs = (parseInt(appSettings.durationMinutes, 10) || 120) * 60 * 1000;
+
+      activeExam = {
+        student: { name, nisn, kelas, nopes },
+        questions: combined,
+        answers: {}, // { questionId: selectedOrigIdx atau string essay }
+        doubts: {},  // { questionId: true }
+        currentIndex: 0,
+        startTime: Date.now(),
+        endTime: Date.now() + durationMs,
+        submitted: false
+      };
+
+      saveActiveExamState();
+      startExamUI();
+    }
+
+    function saveActiveExamState() {
+      if (activeExam) {
+        localStorage.setItem(STORAGE_KEYS.ACTIVE_EXAM, JSON.stringify(activeExam));
+      }
+    }
+
+    function startExamUI() {
+      document.getElementById('exam-intro-card').style.display = 'none';
+      document.getElementById('exam-active-area').style.display = 'block';
+      document.getElementById('exam-student-header').textContent = `${activeExam.student.name} (${activeExam.student.kelas}) • NIS/NISN: ${activeExam.student.nisn || '-'} • No: ${activeExam.student.nopes}`;
+      document.getElementById('exam-total-count').textContent = activeExam.questions.length;
+
+      // Jika sesi sebelumnya terkunci sebelum halaman dimuat ulang, pertahankan status terkunci + alarm
+      if (activeExam.isLocked) {
+        isExamScreenLocked = true;
+        document.getElementById('lock-violation-count').textContent = activeExam.violations || 1;
+        document.getElementById('exam-lock-overlay').classList.add('locked');
+        startAlarmSound();
+      }
+
+      renderExamQuestion();
+      renderNumberGrid();
+      startExamTimer();
+    }
+
+    function startExamTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+
+      const updateClock = () => {
+        if (!activeExam || activeExam.submitted) {
+          clearInterval(timerInterval);
+          return;
+        }
+        if (isExamScreenLocked) {
+          // Geser endTime selama layar terkunci agar sisa waktu tidak hangus saat menunggu pengawas
+          activeExam.endTime += 1000;
+          return;
+        }
+        const remaining = activeExam.endTime - Date.now();
+        if (remaining <= 0) {
+          clearInterval(timerInterval);
+          document.getElementById('exam-timer-display').textContent = '⏱️ 00:00';
+          finalizeExamSubmission(true);
+          return;
+        }
+
+        const totalSec = Math.floor(remaining / 1000);
+        const mins = Math.floor(totalSec / 60);
+        const secs = totalSec % 60;
+        const timerEl = document.getElementById('exam-timer-display');
+        timerEl.textContent = `⏱️ ${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+
+        if (mins < 5) {
+          timerEl.classList.add('urgent');
+        } else {
+          timerEl.classList.remove('urgent');
+        }
+      };
+
+      updateClock();
+      timerInterval = setInterval(updateClock, 1000);
+    }
+
+    function renderExamQuestion() {
+      const idx = activeExam.currentIndex;
+      const q = activeExam.questions[idx];
+      const total = activeExam.questions.length;
+
+      document.getElementById('q-number-badge').textContent = `Soal No. ${idx + 1} dari ${total}`;
+      document.getElementById('q-type-badge').textContent = q.type === 'PG' ? 'Pilihan Ganda' : 'Uraian (Essay)';
+      document.getElementById('q-level-badge').textContent = q.level;
+      document.getElementById('q-tp-label').textContent = q.tp;
+      document.getElementById('q-text-content').textContent = q.text;
+
+      const pgBox = document.getElementById('q-options-container');
+      const essayBox = document.getElementById('q-essay-container');
+
+      if (q.type === 'PG') {
+        pgBox.style.display = 'flex';
+        essayBox.style.display = 'none';
+        pgBox.innerHTML = '';
+
+        const letters = ['A', 'B', 'C', 'D', 'E'];
+        const currentAns = activeExam.answers[q.id];
+
+        q.shuffledOptions.forEach((optObj, optIdx) => {
+          const item = document.createElement('div');
+          const isSelected = currentAns === optObj.origIdx;
+          item.className = `option-item ${isSelected ? 'selected' : ''}`;
+          item.onclick = () => selectPGOption(q.id, optObj.origIdx);
+
+          item.innerHTML = `
+            <div class="option-letter">${letters[optIdx]}</div>
+            <div style="flex: 1; padding-top: 3px;">${escapeHTML(optObj.text)}</div>
+          `;
+          pgBox.appendChild(item);
+        });
+      } else {
+        pgBox.style.display = 'none';
+        essayBox.style.display = 'block';
+        const essayInput = document.getElementById('q-essay-input');
+        essayInput.value = activeExam.answers[q.id] || '';
+      }
+
+      // Update tombol navigasi
+      document.getElementById('btn-prev-q').disabled = idx === 0;
+      const nextBtn = document.getElementById('btn-next-q');
+      if (idx === total - 1) {
+        nextBtn.textContent = '✅ Selesai Ujian';
+        nextBtn.className = 'btn btn-success';
+        nextBtn.onclick = confirmFinishExam;
+      } else {
+        nextBtn.textContent = 'Berikutnya ➡️';
+        nextBtn.className = 'btn btn-primary';
+        nextBtn.onclick = nextQuestion;
+      }
+
+      // Status tombol ragu-ragu
+      const doubtBtn = document.getElementById('btn-doubt-q');
+      if (activeExam.doubts[q.id]) {
+        doubtBtn.textContent = '🚩 Hapus Tanda Ragu';
+        doubtBtn.style.background = 'var(--warning)';
+      } else {
+        doubtBtn.textContent = '🚩 Tandai Ragu-Ragu';
+        doubtBtn.style.background = 'var(--warning-light)';
+      }
+
+      updateAnsweredCounter();
+    }
+
+    function selectPGOption(questionId, origIdx) {
+      activeExam.answers[questionId] = origIdx;
+      saveActiveExamState();
+      renderExamQuestion();
+      renderNumberGrid();
+    }
+
+    function handleEssayInput(val) {
+      const q = activeExam.questions[activeExam.currentIndex];
+      if (val.trim().length > 0) {
+        activeExam.answers[q.id] = val;
+      } else {
+        delete activeExam.answers[q.id];
+      }
+      saveActiveExamState();
+      updateAnsweredCounter();
+      renderNumberGrid();
+    }
+
+    function toggleDoubt() {
+      const q = activeExam.questions[activeExam.currentIndex];
+      if (activeExam.doubts[q.id]) {
+        delete activeExam.doubts[q.id];
+      } else {
+        activeExam.doubts[q.id] = true;
+      }
+      saveActiveExamState();
+      renderExamQuestion();
+      renderNumberGrid();
+    }
+
+    function prevQuestion() {
+      if (activeExam.currentIndex > 0) {
+        activeExam.currentIndex--;
+        saveActiveExamState();
+        renderExamQuestion();
+        renderNumberGrid();
+      }
+    }
+
+    function nextQuestion() {
+      if (activeExam.currentIndex < activeExam.questions.length - 1) {
+        activeExam.currentIndex++;
+        saveActiveExamState();
+        renderExamQuestion();
+        renderNumberGrid();
+      }
+    }
+
+    function jumpToQuestion(index) {
+      activeExam.currentIndex = index;
+      saveActiveExamState();
+      renderExamQuestion();
+      renderNumberGrid();
+    }
+
+    function renderNumberGrid() {
+      const grid = document.getElementById('exam-number-grid');
+      grid.innerHTML = '';
+
+      activeExam.questions.forEach((q, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'num-btn';
+        btn.textContent = idx + 1;
+
+        if (idx === activeExam.currentIndex) btn.classList.add('current');
+        if (activeExam.doubts[q.id]) {
+          btn.classList.add('doubt');
+        } else if (activeExam.answers[q.id] !== undefined && activeExam.answers[q.id] !== '') {
+          btn.classList.add('answered');
+        }
+
+        btn.onclick = () => jumpToQuestion(idx);
+        grid.appendChild(btn);
+      });
+    }
+
+    function updateAnsweredCounter() {
+      let count = 0;
+      activeExam.questions.forEach(q => {
+        const ans = activeExam.answers[q.id];
+        if (ans !== undefined && String(ans).trim() !== '') count++;
+      });
+      document.getElementById('exam-answered-count').textContent = count;
+    }
+
+    function confirmFinishExam() {
+      const total = activeExam.questions.length;
+      let answered = 0;
+      let doubts = Object.keys(activeExam.doubts).length;
+
+      activeExam.questions.forEach(q => {
+        const ans = activeExam.answers[q.id];
+        if (ans !== undefined && String(ans).trim() !== '') answered++;
+      });
+
+      const unanswered = total - answered;
+
+      showModal(
+        'Konfirmasi Pengumpulan Ujian',
+        `<p>Apakah Anda yakin ingin mengakhiri dan mengumpulkan ujian sekarang?</p>
+         <ul style="margin: 12px 0 0 20px; line-height: 1.8;">
+           <li>Soal Dijawab: <strong style="color: var(--green-dark);">${answered} soal</strong></li>
+           <li>Soal Belum Dijawab: <strong style="color: var(--danger);">${unanswered} soal</strong></li>
+           <li>Ditandai Ragu-Ragu: <strong style="color: #b45309;">${doubts} soal</strong></li>
+         </ul>
+         <p style="margin-top: 10px; font-size: 0.85rem; color: var(--text-muted);">Setelah dikumpulkan, jawaban tidak dapat diubah lagi.</p>`,
+        [
+          { text: 'Batal, Tinjau Lagi', class: 'btn-outline', action: closeModal },
+          {
+            text: 'Ya, Kumpulkan Sekarang',
+            class: 'btn-success',
+            action: () => {
+              closeModal();
+              finalizeExamSubmission(false);
+            }
+          }
+        ]
+      );
+    }
+
+    function finalizeExamSubmission(isAutoTimeout) {
+      if (!activeExam || activeExam.submitted) return;
+      activeExam.submitted = true;
+      isExamScreenLocked = false;
+      stopAlarmSound();
+      document.getElementById('exam-lock-overlay').classList.remove('locked');
+      if (timerInterval) clearInterval(timerInterval);
+
+      // Hitung Skor Pilihan Ganda Otomatis
+      const pgQuestions = appQuestions.filter(q => q.type === 'PG');
+      const essayQuestions = appQuestions.filter(q => q.type === 'ESSAY');
+
+      let pgCorrect = 0;
+      pgQuestions.forEach(q => {
+        if (activeExam.answers[q.id] === q.answerIndex) {
+          pgCorrect++;
+        }
+      });
+
+      const pgScore = pgQuestions.length > 0 ? (pgCorrect / pgQuestions.length) * 100 : 0;
+
+      // Siapkan struktur penilaian essay (menunggu koreksi guru atau skor awal 0)
+      const essayGrades = {};
+      essayQuestions.forEach(q => {
+        essayGrades[q.id] = {
+          answer: activeExam.answers[q.id] || '',
+          score: 0,
+          feedback: '',
+          graded: false
+        };
+      });
+
+      const record = {
+        id: 'RES-' + Date.now(),
+        nopes: activeExam.student.nopes,
+        nisn: activeExam.student.nisn || '-',
+        name: activeExam.student.name,
+        kelas: activeExam.student.kelas,
+        submittedAt: new Date().toLocaleString('id-ID'),
+        answers: activeExam.answers,
+        pgCorrect: pgCorrect,
+        pgTotal: pgQuestions.length,
+        pgScore: Number(pgScore.toFixed(2)),
+        essayGrades: essayGrades,
+        essayScore: 0,
+        essayGradedComplete: essayQuestions.length === 0,
+        finalScore: calculateWeightedFinalScore(pgScore, 0)
+      };
+
+      // Simpan ke daftar hasil & sinkronkan ke daftar peserta terdaftar
+      examResults.push(record);
+      if (!registeredStudents.some(s => s.nopes.toLowerCase() === record.nopes.toLowerCase())) {
+        registeredStudents.push({
+          nopes: record.nopes,
+          nisn: record.nisn,
+          name: record.name,
+          kelas: record.kelas
+        });
+      }
+
+      saveAllToStorage();
+      localStorage.removeItem(STORAGE_KEYS.ACTIVE_EXAM);
+
+      // Reset tampilan ruang ujian
+      activeExam = null;
+      document.getElementById('exam-active-area').style.display = 'none';
+      document.getElementById('exam-intro-card').style.display = 'block';
+      document.getElementById('resume-banner').style.display = 'none';
+      document.getElementById('form-start-exam').reset();
+
+      populateStudentDropdowns();
+      refreshDashboard();
+
+      const msgPrefix = isAutoTimeout
+        ? '⏰ <strong>Waktu ujian telah habis!</strong> Jawaban Anda telah otomatis dikumpulkan.'
+        : '🎉 <strong>Selamat!</strong> Ujian Anda telah berhasil dikumpulkan.';
+
+      if (appSettings.showResultToStudent) {
+        showModal(
+          'Ujian Selesai',
+          `${msgPrefix}<br><br>
+           Skor Pilihan Ganda Sementara: <strong>${record.pgScore}</strong> (${record.pgCorrect}/${record.pgTotal} benar).<br>
+           <em>Catatan: Nilai akhir lengkap akan terhitung setelah Guru menilai jawaban Essay Anda.</em>`,
+          [
+            {
+              text: 'Lihat Detail Hasil Saya',
+              class: 'btn-primary',
+              action: () => {
+                closeModal();
+                navigateTo('view-hasil');
+                document.getElementById('select-result-student').value = record.id;
+                renderSelectedStudentResult();
+              }
+            }
+          ]
+        );
+      } else {
+        showModal(
+          'Ujian Selesai',
+          `${msgPrefix}<br><br>Hasil ujian telah tersimpan aman di sistem dan akan diumumkan oleh Guru Mata Pelajaran.`,
+          [{ text: 'Kembali ke Beranda', class: 'btn-primary', action: () => { closeModal(); navigateTo('view-beranda'); } }]
+        );
+      }
+    }
+
+    function calculateWeightedFinalScore(pgScore, essayScore) {
+      const wPG = (Number(appSettings.weightPG) || 70) / 100;
+      const wEssay = (Number(appSettings.weightEssay) || 30) / 100;
+      return Number(((pgScore * wPG) + (essayScore * wEssay)).toFixed(2));
+    }
+
+    function getPredicate(score) {
+      if (score >= 90) return { code: 'A', label: 'Sangat Baik (Istimewa)' };
+      if (score >= 80) return { code: 'B', label: 'Baik' };
+      if (score >= appSettings.kkm) return { code: 'C', label: 'Cukup (Tuntas)' };
+      return { code: 'D', label: 'Perlu Bimbingan (Remedial)' };
+    }
+
+    /* ========================================================================
+       7. DASHBOARD GURU & STATISTIK
+       ======================================================================== */
+    function refreshDashboard() {
+      const totalReg = Math.max(registeredStudents.length, examResults.length);
+      const doneCount = examResults.length;
+      const notDoneCount = Math.max(0, totalReg - doneCount);
+
+      let avgScore = 0;
+      let maxScore = 0;
+      let minScore = 0;
+
+      if (doneCount > 0) {
+        const scores = examResults.map(r => r.finalScore);
+        avgScore = (scores.reduce((a, b) => a + b, 0) / doneCount).toFixed(1);
+        maxScore = Math.max(...scores).toFixed(1);
+        minScore = Math.min(...scores).toFixed(1);
+      }
+
+      document.getElementById('dashboard-metrics').innerHTML = `
+        <div class="metric-box">
+          <div class="metric-label">Total Peserta</div>
+          <div class="metric-value">${totalReg}</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label">Sudah Ujian</div>
+          <div class="metric-value" style="color: var(--green);">${doneCount}</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label">Belum Ujian</div>
+          <div class="metric-value" style="color: var(--orange);">${notDoneCount}</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label">Rata-Rata Nilai</div>
+          <div class="metric-value">${avgScore}</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label">Nilai Tertinggi</div>
+          <div class="metric-value" style="color: var(--green-dark);">${maxScore}</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label">Nilai Terendah</div>
+          <div class="metric-value" style="color: var(--danger);">${minScore}</div>
+        </div>
+      `;
+
+      // Grafik Distribusi Predikat
+      const counts = { A: 0, B: 0, C: 0, D: 0 };
+      examResults.forEach(r => {
+        const p = getPredicate(r.finalScore).code;
+        counts[p]++;
+      });
+
+      const chartData = [
+        { label: 'Predikat A (90-100)', count: counts.A, color: '#16a34a' },
+        { label: 'Predikat B (80-89)', count: counts.B, color: '#0f2544' },
+        { label: `Predikat C (${appSettings.kkm}-79)`, count: counts.C, color: '#f97316' },
+        { label: `Predikat D (<${appSettings.kkm})`, count: counts.D, color: '#dc2626' }
+      ];
+
+      const chartEl = document.getElementById('dashboard-chart');
+      chartEl.innerHTML = chartData.map(item => {
+        const pct = doneCount > 0 ? Math.round((item.count / doneCount) * 100) : 0;
+        return `
+          <div class="chart-row">
+            <div class="chart-label">${item.label}</div>
+            <div class="chart-track">
+              <div class="chart-fill" style="width: ${Math.max(pct, item.count > 0 ? 12 : 0)}%; background: ${item.color};">
+                ${item.count} (${pct}%)
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Ringkasan Soal
+      const pgL1 = appQuestions.filter(q => q.type === 'PG' && q.level.includes('1')).length;
+      const pgL2 = appQuestions.filter(q => q.type === 'PG' && q.level.includes('2')).length;
+      const pgL3 = appQuestions.filter(q => q.type === 'PG' && q.level.includes('3')).length;
+      const esL1 = appQuestions.filter(q => q.type === 'ESSAY' && q.level.includes('1')).length;
+      const esL2 = appQuestions.filter(q => q.type === 'ESSAY' && q.level.includes('2')).length;
+      const esL3 = appQuestions.filter(q => q.type === 'ESSAY' && q.level.includes('3')).length;
+
+      document.getElementById('dashboard-question-summary').innerHTML = `
+        <div>• <strong>Pilihan Ganda (${pgL1 + pgL2 + pgL3} Soal):</strong> L1 (${pgL1}), L2 (${pgL2}), L3/HOTS (${pgL3})</div>
+        <div>• <strong>Uraian/Essay (${esL1 + esL2 + esL3} Soal):</strong> L1 (${esL1}), L2 (${esL2}), L3/HOTS (${esL3})</div>
+        <div>• <strong>Bobot Nilai:</strong> PG ${appSettings.weightPG}% + Essay ${appSettings.weightEssay}%</div>
+        <div>• <strong>Batas Ketuntasan (KKTP):</strong> ${appSettings.kkm}</div>
+      `;
+
+      // Tabel Rekapitulasi
+      const tbody = document.getElementById('dashboard-table-body');
+      if (examResults.length === 0 && registeredStudents.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="10" style="text-align: center; color: var(--text-muted); padding: 20px;">Belum ada data peserta ujian.</td></tr>`;
+        return;
+      }
+
+      let rowsHTML = '';
+      let rowNum = 1;
+
+      examResults.forEach(r => {
+        const pred = getPredicate(r.finalScore);
+        const statusEssay = r.essayGradedComplete
+          ? '<span class="badge badge-green">Selesai Dinilai</span>'
+          : '<span class="badge badge-warning">Perlu Koreksi Essay</span>';
+
+        rowsHTML += `
+          <tr>
+            <td>${rowNum++}</td>
+            <td><strong>${escapeHTML(r.nopes)}</strong><br><small style="color:var(--text-muted);">NIS/NISN: ${escapeHTML(r.nisn || '-')}</small></td>
+            <td>${escapeHTML(r.name)}</td>
+            <td>${escapeHTML(r.kelas)}</td>
+            <td>${statusEssay}</td>
+            <td>${r.pgScore}</td>
+            <td>${r.essayScore}</td>
+            <td><strong style="color: var(--navy); font-size: 0.98rem;">${r.finalScore}</strong></td>
+            <td><span class="badge ${r.finalScore >= appSettings.kkm ? 'badge-green' : 'badge-danger'}">${pred.code} (${pred.label})</span></td>
+            <td>
+              <button class="btn btn-outline btn-sm" onclick="viewStudentDetailShortcut('${r.id}')">Detail</button>
+            </td>
+          </tr>
+        `;
+      });
+
+      // Tambahkan peserta terdaftar yang belum ujian
+      registeredStudents.forEach(reg => {
+        const hasDone = examResults.some(r => r.nopes.toLowerCase() === reg.nopes.toLowerCase());
+        if (!hasDone) {
+          rowsHTML += `
+            <tr>
+              <td>${rowNum++}</td>
+              <td>${escapeHTML(reg.nopes)}</td>
+              <td>${escapeHTML(reg.name)}</td>
+              <td>${escapeHTML(reg.kelas)}</td>
+              <td><span class="badge badge-danger">Belum Ujian</span></td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+          `;
+        }
+      });
+
+      tbody.innerHTML = rowsHTML;
+    }
+
+    function viewStudentDetailShortcut(resultId) {
+      navigateTo('view-hasil');
+      document.getElementById('select-result-student').value = resultId;
+      renderSelectedStudentResult();
+    }
+
+    /* ========================================================================
+       8. HASIL PESERTA & DETAIL JAWABAN
+       ======================================================================== */
+    function populateStudentDropdowns() {
+      const selects = [
+        document.getElementById('select-result-student'),
+        document.getElementById('grading-student-select'),
+        document.getElementById('cert-student-select')
+      ];
+
+      selects.forEach(sel => {
+        if (!sel) return;
+        const prevVal = sel.value;
+        sel.innerHTML = '<option value="">-- Pilih Peserta Ujian --</option>';
+        examResults.forEach(r => {
+          const opt = document.createElement('option');
+          opt.value = r.id;
+          opt.textContent = `${r.nopes} - ${r.name} (${r.kelas}) [Nilai: ${r.finalScore}]`;
+          sel.appendChild(opt);
+        });
+        if (prevVal) sel.value = prevVal;
+      });
+    }
+
+    function renderSelectedStudentResult() {
+      const id = document.getElementById('select-result-student').value;
+      const container = document.getElementById('result-detail-container');
+      const r = examResults.find(item => item.id === id);
+
+      if (!r) {
+        container.innerHTML = `<div style="text-align: center; padding: 40px 20px; color: var(--text-muted);">Silakan pilih nama peserta ujian pada dropdown di atas.</div>`;
+        return;
+      }
+
+      const isPassed = r.finalScore >= appSettings.kkm;
+      const pred = getPredicate(r.finalScore);
+      const letters = ['A', 'B', 'C', 'D', 'E'];
+
+      let detailHTML = `
+        <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
+            <div><span style="color:var(--text-muted);font-size:0.82rem;">Nama Peserta:</span><br><strong>${escapeHTML(r.name)}</strong></div>
+            <div><span style="color:var(--text-muted);font-size:0.82rem;">NIS / NISN:</span><br><strong>${escapeHTML(r.nisn || '-')}</strong></div>
+            <div><span style="color:var(--text-muted);font-size:0.82rem;">Nomor Peserta / Kelas:</span><br><strong>${escapeHTML(r.nopes)} / ${escapeHTML(r.kelas)}</strong></div>
+            <div><span style="color:var(--text-muted);font-size:0.82rem;">Waktu Selesai:</span><br><strong>${r.submittedAt}</strong></div>
+            <div><span style="color:var(--text-muted);font-size:0.82rem;">Status Ketuntasan (KKTP ${appSettings.kkm}):</span><br>
+              <span class="badge ${isPassed ? 'badge-green' : 'badge-danger'}" style="font-size:0.85rem;">
+                ${isPassed ? 'TUNTAS' : 'BELUM TUNTAS'}
+              </span>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-top: 18px; padding-top: 16px; border-top: 1px solid #cbd5e1;">
+            <div style="background:#fff; padding:12px 18px; border-radius:8px; border:1px solid #e2e8f0;">
+              <div style="font-size:0.78rem; color:var(--text-muted);">Nilai Pilihan Ganda (${appSettings.weightPG}%)</div>
+              <strong style="font-size:1.3rem; color:var(--navy);">${r.pgScore}</strong> <span style="font-size:0.8rem;">(${r.pgCorrect}/${r.pgTotal} benar)</span>
+            </div>
+            <div style="background:#fff; padding:12px 18px; border-radius:8px; border:1px solid #e2e8f0;">
+              <div style="font-size:0.78rem; color:var(--text-muted);">Nilai Essay (${appSettings.weightEssay}%)</div>
+              <strong style="font-size:1.3rem; color:var(--navy);">${r.essayScore}</strong> <span style="font-size:0.8rem;">(${r.essayGradedComplete ? 'Sudah Dinilai' : 'Menunggu Koreksi Guru'})</span>
+            </div>
+            <div style="background:var(--navy); color:#fff; padding:12px 22px; border-radius:8px;">
+              <div style="font-size:0.78rem; color:#cbd5e1;">NILAI AKHIR</div>
+              <strong style="font-size:1.45rem; color:#86efac;">${r.finalScore}</strong> <span style="font-size:0.85rem;">(Predikat ${pred.code})</span>
+            </div>
+          </div>
+        </div>
+
+        <h4 style="color: var(--navy); margin-bottom: 12px;">📝 Lembar Rincian Jawaban Peserta</h4>
+      `;
+
+      appQuestions.forEach((q, idx) => {
+        if (q.type === 'PG') {
+          const userAns = r.answers[q.id];
+          const isCorrect = userAns === q.answerIndex;
+          const userText = userAns !== undefined ? `${letters[userAns]}. ${q.options[userAns]}` : '<em>Tidak dijawab</em>';
+          const keyText = `${letters[q.answerIndex]}. ${q.options[q.answerIndex]}`;
+
+          detailHTML += `
+            <div style="border: 1px solid #e2e8f0; border-left: 5px solid ${isCorrect ? 'var(--green)' : 'var(--danger)'}; border-radius: 8px; padding: 14px; margin-bottom: 12px; background: #fff;">
+              <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                <strong>Soal #${idx + 1} (${q.level})</strong>
+                <span class="badge ${isCorrect ? 'badge-green' : 'badge-danger'}">${isCorrect ? '✓ Benar' : '✗ Salah'}</span>
+              </div>
+              <p style="margin-bottom: 8px;">${escapeHTML(q.text)}</p>
+              <div style="font-size: 0.86rem;">
+                <div>Jawaban Peserta: <strong>${userText}</strong></div>
+                <div style="color: var(--green-dark);">Kunci Jawaban: <strong>${escapeHTML(keyText)}</strong></div>
+                <div style="color: var(--text-muted); margin-top: 4px;"><em>Pembahasan: ${escapeHTML(q.explanation || '-')}</em></div>
+              </div>
+            </div>
+          `;
+        } else {
+          const eg = r.essayGrades[q.id] || { answer: r.answers[q.id] || '', score: 0, feedback: '', graded: false };
+          detailHTML += `
+            <div style="border: 1px solid #e2e8f0; border-left: 5px solid var(--orange); border-radius: 8px; padding: 14px; margin-bottom: 12px; background: #fff;">
+              <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                <strong>Soal Essay #${idx + 1} (${q.level})</strong>
+                <span class="badge badge-orange">Skor Guru: ${eg.score} / 100</span>
+              </div>
+              <p style="margin-bottom: 8px;">${escapeHTML(q.text)}</p>
+              <div style="background: #f8fafc; padding: 10px; border-radius: 6px; font-size: 0.88rem; margin-bottom: 6px;">
+                <strong>Jawaban Peserta:</strong><br>${escapeHTML(eg.answer || '(Tidak dijawab)')}
+              </div>
+              ${eg.feedback ? `<div style="font-size: 0.85rem; color: var(--navy);"><strong>Umpan Balik Guru:</strong> ${escapeHTML(eg.feedback)}</div>` : ''}
+            </div>
+          `;
+        }
+      });
+
+      container.innerHTML = detailHTML;
+    }
+
+    /* ========================================================================
+       9. ADMIN & PENILAIAN ESSAY MANUAL BERBASIS RUBRIK
+       ======================================================================== */
+    function syncTeacherAuthUI() {
+      const dashLogin = document.getElementById('dashboard-login-box');
+      const dashContent = document.getElementById('dashboard-panel-content');
+      const adminLogin = document.getElementById('admin-login-box');
+      const adminContent = document.getElementById('admin-panel-content');
+
+      if (isAdminLoggedIn) {
+        if (dashLogin) dashLogin.style.display = 'none';
+        if (dashContent) dashContent.style.display = 'block';
+        if (adminLogin) adminLogin.style.display = 'none';
+        if (adminContent) adminContent.style.display = 'block';
+      } else {
+        if (dashLogin) dashLogin.style.display = 'block';
+        if (dashContent) dashContent.style.display = 'none';
+        if (adminLogin) adminLogin.style.display = 'block';
+        if (adminContent) adminContent.style.display = 'none';
+      }
+    }
+
+    function handleDashboardLogin(e) {
+      e.preventDefault();
+      const pass = document.getElementById('dashboard-pass-input').value;
+      if (pass === appSettings.adminPassword) {
+        isAdminLoggedIn = true;
+        document.getElementById('dashboard-pass-input').value = '';
+        syncTeacherAuthUI();
+        refreshDashboard();
+        populateStudentDropdowns();
+      } else {
+        showModal('Akses Ditolak', 'PIN / Kata sandi Guru yang Anda masukkan salah.');
+      }
+    }
+
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const pass = document.getElementById('admin-pass-input').value;
+      if (pass === appSettings.adminPassword) {
+        isAdminLoggedIn = true;
+        document.getElementById('admin-pass-input').value = '';
+        syncTeacherAuthUI();
+        renderAdminTables();
+        populateStudentDropdowns();
+      } else {
+        showModal('Akses Ditolak', 'PIN / Kata sandi Administrator/Guru yang Anda masukkan salah.');
+      }
+    }
+
+    function logoutTeacherAccess() {
+      isAdminLoggedIn = false;
+      syncTeacherAuthUI();
+    }
+
+    function switchAdminTab(tabId, btnEl) {
+      document.querySelectorAll('.admin-tab-pane').forEach(p => p.style.display = 'none');
+      document.querySelectorAll('.sub-tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(tabId).style.display = 'block';
+      btnEl.classList.add('active');
+    }
+
+    function renderEssayGradingForm() {
+      const resId = document.getElementById('grading-student-select').value;
+      const box = document.getElementById('essay-grading-container');
+      const record = examResults.find(r => r.id === resId);
+
+      if (!record) {
+        box.innerHTML = `<div style="padding: 24px; text-align: center; color: var(--text-muted); background: #f8fafc; border-radius: 10px;">Pilih nama peserta di atas untuk mulai mengoreksi jawaban essay.</div>`;
+        return;
+      }
+
+      const essayQuestions = appQuestions.filter(q => q.type === 'ESSAY');
+      if (essayQuestions.length === 0) {
+        box.innerHTML = `<p>Tidak ada soal essay dalam bank soal.</p>`;
+        return;
+      }
+
+      let html = `<form onsubmit="saveEssayGrades(event, '${record.id}')">`;
+      essayQuestions.forEach((q, idx) => {
+        const eg = record.essayGrades[q.id] || { answer: record.answers[q.id] || '', score: 0, feedback: '' };
+        html += `
+          <div style="border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 18px; margin-bottom: 16px; background: #fff;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+              <strong style="color: var(--navy);">Soal Essay #${idx + 1} — ${q.tp}</strong>
+              <span class="badge badge-orange">${q.level}</span>
+            </div>
+            <p style="font-weight: 600; margin-bottom: 10px;">${escapeHTML(q.text)}</p>
+
+            <div style="background: #f1f5f9; padding: 12px; border-radius: 8px; margin-bottom: 10px; font-size: 0.9rem;">
+              <strong style="color: var(--navy);">Jawaban Peserta (${escapeHTML(record.name)}):</strong>
+              <p style="margin-top: 4px; white-space: pre-wrap;">${escapeHTML(eg.answer || '(Peserta tidak mengisi jawaban)')}</p>
+            </div>
+
+            <div style="background: var(--green-light); padding: 12px; border-radius: 8px; margin-bottom: 12px; font-size: 0.85rem;">
+              <strong style="color: var(--green-dark);">Pedoman Jawaban:</strong>
+              <p style="margin-top: 3px;">${escapeHTML(q.guide || '-')}</p>
+              <strong style="color: var(--green-dark); display:block; margin-top:6px;">Rubrik Penilaian (Skala 0–100):</strong>
+              <p style="margin-top: 3px;">${escapeHTML(q.rubric || '-')}</p>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group" style="margin-bottom:0;">
+                <label>Skor Guru (0 – 100)</label>
+                <input type="number" class="form-control essay-score-input" data-qid="${q.id}" min="0" max="100" value="${eg.score}" required />
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label>Komentar / Umpan Balik Guru</label>
+                <input type="text" class="form-control essay-feedback-input" data-qid="${q.id}" value="${escapeHTML(eg.feedback || '')}" placeholder="Catatan penguatan atau perbaikan..." />
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      html += `<button type="submit" class="btn btn-success">💾 Simpan Nilai Essay & Hitung Nilai Akhir</button></form>`;
+      box.innerHTML = html;
+    }
+
+    function saveEssayGrades(e, resultId) {
+      e.preventDefault();
+      const record = examResults.find(r => r.id === resultId);
+      if (!record) return;
+
+      const scoreInputs = document.querySelectorAll('.essay-score-input');
+      const feedbackInputs = document.querySelectorAll('.essay-feedback-input');
+
+      let totalEssay = 0;
+      let count = 0;
+
+      scoreInputs.forEach((inp, idx) => {
+        const qId = Number(inp.dataset.qid);
+        const val = Math.min(100, Math.max(0, Number(inp.value) || 0));
+        const fb = feedbackInputs[idx].value.trim();
+
+        if (!record.essayGrades[qId]) {
+          record.essayGrades[qId] = { answer: record.answers[qId] || '' };
+        }
+        record.essayGrades[qId].score = val;
+        record.essayGrades[qId].feedback = fb;
+        record.essayGrades[qId].graded = true;
+
+        totalEssay += val;
+        count++;
+      });
+
+      record.essayScore = count > 0 ? Number((totalEssay / count).toFixed(2)) : 0;
+      record.essayGradedComplete = true;
+      record.finalScore = calculateWeightedFinalScore(record.pgScore, record.essayScore);
+
+      saveAllToStorage();
+      refreshDashboard();
+      populateStudentDropdowns();
+
+      // Otomatis pilih peserta ini di menu Hasil Peserta dan Sertifikat serta segarkan tampilannya
+      const resSelect = document.getElementById('select-result-student');
+      const certSelect = document.getElementById('cert-student-select');
+      if (resSelect) {
+        resSelect.value = record.id;
+        renderSelectedStudentResult();
+      }
+      if (certSelect) {
+        certSelect.value = record.id;
+        renderCertificate();
+      }
+
+      showModal(
+        'Penilaian Tersimpan & Nilai Digabungkan',
+        `Nilai Essay untuk <strong>${escapeHTML(record.name)}</strong> telah digabungkan dengan Nilai Pilihan Ganda:<br><br>
+         • Nilai PG (${appSettings.weightPG}%): <strong>${record.pgScore}</strong><br>
+         • Nilai Essay (${appSettings.weightEssay}%): <strong>${record.essayScore}</strong><br>
+         • <strong>Nilai Akhir Gabungan: <span style="color: var(--green-dark); font-size: 1.15rem;">${record.finalScore}</span></strong><br><br>
+         <em>Data pada menu Hasil Peserta dan Sertifikat telah diperbarui otomatis.</em>`,
+        [
+          { text: 'Tutup', class: 'btn-outline', action: closeModal },
+          {
+            text: '📋 Lihat Hasil Peserta',
+            class: 'btn-primary',
+            action: () => {
+              closeModal();
+              navigateTo('view-hasil');
+            }
+          },
+          {
+            text: '🏆 Lihat Sertifikat',
+            class: 'btn-success',
+            action: () => {
+              closeModal();
+              navigateTo('view-sertifikat');
+            }
+          }
+        ]
+      );
+    }
+
+    function renderAdminTables() {
+      // Tabel Bank Soal
+      const qTbody = document.getElementById('admin-questions-tbody');
+      const letters = ['A', 'B', 'C', 'D', 'E'];
+      qTbody.innerHTML = appQuestions.map((q, idx) => {
+        const keyInfo = q.type === 'PG'
+          ? `<span class="badge badge-green">Kunci: ${letters[q.answerIndex]}</span>`
+          : `<span class="badge badge-orange">Rubrik Essay</span>`;
+        return `
+          <tr>
+            <td>${idx + 1}</td>
+            <td><strong>${q.type}</strong></td>
+            <td><span class="badge badge-navy">${q.level}</span></td>
+            <td style="font-size:0.8rem;">${escapeHTML(q.tp)}</td>
+            <td style="max-width: 340px;">${escapeHTML(q.text)}</td>
+            <td>${keyInfo}</td>
+            <td style="white-space: nowrap;">
+              <button class="btn btn-outline btn-sm" onclick="openQuestionModal(${idx})">✏️ Edit</button>
+              <button class="btn btn-danger btn-sm" onclick="deleteQuestion(${idx})">🗑️</button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      // Tabel Peserta
+      const sTbody = document.getElementById('admin-students-tbody');
+      let allRows = [];
+      examResults.forEach(r => {
+        allRows.push({
+          nopes: r.nopes,
+          name: r.name,
+          kelas: r.kelas,
+          done: true,
+          finalScore: r.finalScore,
+          resId: r.id
+        });
+      });
+      registeredStudents.forEach(reg => {
+        if (!allRows.some(x => x.nopes.toLowerCase() === reg.nopes.toLowerCase())) {
+          allRows.push({
+            nopes: reg.nopes,
+            name: reg.name,
+            kelas: reg.kelas,
+            done: false,
+            finalScore: '-',
+            resId: null
+          });
+        }
+      });
+
+      if (allRows.length === 0) {
+        sTbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color:var(--text-muted);">Belum ada peserta terdaftar.</td></tr>`;
+      } else {
+        sTbody.innerHTML = allRows.map((row, i) => `
+          <tr>
+            <td>${i + 1}</td>
+            <td><strong>${escapeHTML(row.nopes)}</strong></td>
+            <td>${escapeHTML(row.name)}</td>
+            <td>${escapeHTML(row.kelas)}</td>
+            <td>${row.done ? '<span class="badge badge-green">Sudah Ujian</span>' : '<span class="badge badge-warning">Terdaftar</span>'}</td>
+            <td><strong>${row.finalScore}</strong></td>
+            <td>
+              <button class="btn btn-danger btn-sm" onclick="deleteParticipant('${escapeHTML(row.nopes)}')">🗑️ Hapus</button>
+            </td>
+          </tr>
+        `).join('');
+      }
+    }
+
+    function openQuestionModal(idx = -1) {
+      document.getElementById('edit-q-index').value = idx;
+      if (idx >= 0) {
+        const q = appQuestions[idx];
+        document.getElementById('q-modal-title').textContent = `Edit Soal #${idx + 1}`;
+        document.getElementById('edit-q-type').value = q.type;
+        document.getElementById('edit-q-level').value = q.level;
+        document.getElementById('edit-q-tp').value = q.tp;
+        document.getElementById('edit-q-text').value = q.text;
+
+        if (q.type === 'PG') {
+          for (let i = 0; i < 5; i++) {
+            document.getElementById(`edit-opt-${i}`).value = q.options[i] || '';
+          }
+          document.getElementById('edit-q-key').value = q.answerIndex;
+          document.getElementById('edit-q-explanation').value = q.explanation || '';
+        } else {
+          document.getElementById('edit-q-guide').value = q.guide || '';
+          document.getElementById('edit-q-rubric').value = q.rubric || '';
+        }
+      } else {
+        document.getElementById('q-modal-title').textContent = 'Tambah Soal Baru';
+        document.getElementById('edit-q-type').value = 'PG';
+        document.getElementById('edit-q-level').value = 'Level 1 (Pemahaman)';
+        document.getElementById('edit-q-tp').value = '';
+        document.getElementById('edit-q-text').value = '';
+        for (let i = 0; i < 5; i++) document.getElementById(`edit-opt-${i}`).value = '';
+        document.getElementById('edit-q-key').value = '0';
+        document.getElementById('edit-q-explanation').value = '';
+        document.getElementById('edit-q-guide').value = '';
+        document.getElementById('edit-q-rubric').value = '';
+      }
+
+      toggleQuestionModalFields();
+      document.getElementById('question-modal').classList.add('open');
+    }
+
+    function closeQuestionModal() {
+      document.getElementById('question-modal').classList.remove('open');
+    }
+
+    function toggleQuestionModalFields() {
+      const type = document.getElementById('edit-q-type').value;
+      document.getElementById('edit-pg-fields').style.display = type === 'PG' ? 'block' : 'none';
+      document.getElementById('edit-essay-fields').style.display = type === 'ESSAY' ? 'block' : 'none';
+    }
+
+    function saveQuestionForm(e) {
+      e.preventDefault();
+      const idx = parseInt(document.getElementById('edit-q-index').value, 10);
+      const type = document.getElementById('edit-q-type').value;
+      const level = document.getElementById('edit-q-level').value;
+      const tp = document.getElementById('edit-q-tp').value.trim();
+      const text = document.getElementById('edit-q-text').value.trim();
+
+      const newObj = {
+        id: idx >= 0 ? appQuestions[idx].id : Date.now(),
+        type,
+        level,
+        tp,
+        text
+      };
+
+      if (type === 'PG') {
+        newObj.options = [
+          document.getElementById('edit-opt-0').value.trim(),
+          document.getElementById('edit-opt-1').value.trim(),
+          document.getElementById('edit-opt-2').value.trim(),
+          document.getElementById('edit-opt-3').value.trim(),
+          document.getElementById('edit-opt-4').value.trim()
+        ];
+        newObj.answerIndex = parseInt(document.getElementById('edit-q-key').value, 10);
+        newObj.explanation = document.getElementById('edit-q-explanation').value.trim();
+      } else {
+        newObj.guide = document.getElementById('edit-q-guide').value.trim();
+        newObj.rubric = document.getElementById('edit-q-rubric').value.trim();
+      }
+
+      if (idx >= 0) {
+        appQuestions[idx] = newObj;
+      } else {
+        appQuestions.push(newObj);
+      }
+
+      saveAllToStorage();
+      applySettingsToUI();
+      renderAdminTables();
+      closeQuestionModal();
+    }
+
+    function deleteQuestion(idx) {
+      showModal(
+        'Hapus Soal',
+        `Yakin ingin menghapus soal nomor ${idx + 1} dari bank soal?`,
+        [
+          { text: 'Batal', class: 'btn-outline', action: closeModal },
+          {
+            text: 'Ya, Hapus',
+            class: 'btn-danger',
+            action: () => {
+              appQuestions.splice(idx, 1);
+              saveAllToStorage();
+              applySettingsToUI();
+              renderAdminTables();
+              closeModal();
+            }
+          }
+        ]
+      );
+    }
+
+    function addRegisteredStudent(e) {
+      e.preventDefault();
+      const nopes = document.getElementById('reg-nopes').value.trim();
+      const name = document.getElementById('reg-nama').value.trim();
+      const kelas = document.getElementById('reg-kelas').value.trim();
+
+      if (registeredStudents.some(s => s.nopes.toLowerCase() === nopes.toLowerCase())) {
+        showModal('Duplikasi Nomor Peserta', `Nomor peserta <strong>${nopes}</strong> sudah terdaftar.`);
+        return;
+      }
+
+      registeredStudents.push({ nopes, name, kelas });
+      saveAllToStorage();
+      renderAdminTables();
+      refreshDashboard();
+      e.target.reset();
+    }
+
+    function deleteParticipant(nopes) {
+      showModal(
+        'Hapus Data Peserta',
+        `Hapus seluruh data dan riwayat ujian untuk nomor peserta <strong>${nopes}</strong>? Peserta dapat mengikuti ujian ulang setelah dihapus.`,
+        [
+          { text: 'Batal', class: 'btn-outline', action: closeModal },
+          {
+            text: 'Ya, Hapus',
+            class: 'btn-danger',
+            action: () => {
+              registeredStudents = registeredStudents.filter(s => s.nopes.toLowerCase() !== nopes.toLowerCase());
+              examResults = examResults.filter(r => r.nopes.toLowerCase() !== nopes.toLowerCase());
+              saveAllToStorage();
+              renderAdminTables();
+              refreshDashboard();
+              populateStudentDropdowns();
+              closeModal();
+            }
+          }
+        ]
+      );
+    }
+
+    function saveAppSettings(e) {
+      e.preventDefault();
+      const wPG = Number(document.getElementById('set-bobot-pg').value);
+      const wEssay = Number(document.getElementById('set-bobot-essay').value);
+
+      if (wPG + wEssay !== 100) {
+        showModal('Validasi Bobot Nilai', 'Jumlah Bobot Pilihan Ganda dan Bobot Essay harus tepat <strong>100%</strong>.');
+        return;
+      }
+
+      appSettings.schoolName = document.getElementById('set-sekolah').value.trim();
+      appSettings.teacherName = document.getElementById('set-guru').value.trim();
+      appSettings.subjectName = document.getElementById('set-mapel').value.trim();
+      appSettings.className = document.getElementById('set-kelas').value.trim();
+      appSettings.academicYear = document.getElementById('set-tahun').value.trim();
+      appSettings.examDate = document.getElementById('set-tanggal').value.trim();
+      appSettings.durationMinutes = Number(document.getElementById('set-durasi').value);
+      appSettings.weightPG = wPG;
+      appSettings.weightEssay = wEssay;
+      appSettings.kkm = Number(document.getElementById('set-kkm').value);
+      appSettings.shuffleQuestions = document.getElementById('set-acak-soal').value === 'true';
+      appSettings.shuffleOptions = document.getElementById('set-acak-opsi').value === 'true';
+      appSettings.showResultToStudent = document.getElementById('set-show-result').value === 'true';
+      appSettings.adminPassword = document.getElementById('set-admin-pass').value.trim();
+
+      // Hitung ulang nilai akhir semua hasil jika bobot berubah
+      examResults.forEach(r => {
+        r.finalScore = calculateWeightedFinalScore(r.pgScore, r.essayScore);
+      });
+
+      saveAllToStorage();
+      applySettingsToUI();
+      refreshDashboard();
+      populateStudentDropdowns();
+
+      showModal('Pengaturan Tersimpan', 'Seluruh konfigurasi identitas sekolah, durasi ujian, dan bobot penilaian berhasil diperbarui.');
+    }
+
+    /* ========================================================================
+       10. SERTIFIKAT HASIL UJIAN
+       ======================================================================== */
+    function renderCertificate() {
+      const id = document.getElementById('cert-student-select').value;
+      const r = examResults.find(item => item.id === id);
+
+      document.getElementById('cert-school-top').textContent = appSettings.schoolName.toUpperCase();
+      document.getElementById('cert-tahun').textContent = appSettings.academicYear;
+      document.getElementById('cert-mapel').textContent = appSettings.subjectName;
+      document.getElementById('cert-guru').textContent = appSettings.teacherName;
+
+      if (!r) {
+        document.getElementById('cert-nama').textContent = '[Pilih Peserta Ujian]';
+        document.getElementById('cert-nisn').textContent = '-';
+        document.getElementById('cert-nopes').textContent = '-';
+        document.getElementById('cert-kelas').textContent = '-';
+        document.getElementById('cert-nilai').textContent = '0.0';
+        document.getElementById('cert-predikat').textContent = '-';
+        document.getElementById('cert-status').textContent = '-';
+        document.getElementById('cert-date').textContent = appSettings.examDate || '27 November 2026';
+        return;
+      }
+
+      const pred = getPredicate(r.finalScore);
+      const isPassed = r.finalScore >= appSettings.kkm;
+
+      document.getElementById('cert-nama').textContent = r.name.toUpperCase();
+      document.getElementById('cert-nisn').textContent = r.nisn || '-';
+      document.getElementById('cert-nopes').textContent = r.nopes;
+      document.getElementById('cert-kelas').textContent = r.kelas;
+      document.getElementById('cert-nilai').textContent = r.finalScore;
+      document.getElementById('cert-predikat').textContent = `${pred.code} (${pred.label})`;
+      document.getElementById('cert-status').textContent = isPassed ? 'LULUS / TUNTAS' : 'PERLU REMIDI';
+      document.getElementById('cert-date').textContent = appSettings.examDate || '27 November 2026';
+    }
+
+    /* ========================================================================
+       11. BACKUP, RESTORE, EKSPOR CSV/JSON & RESET DATA
+       ======================================================================== */
+    function downloadFile(filename, content, mimeType) {
+      const blob = new Blob([content], { type: mimeType });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function exportCSVResults() {
+      if (examResults.length === 0) {
+        showModal('Data Kosong', 'Belum ada data hasil ujian peserta untuk diekspor.');
+        return;
+      }
+      const headers = ['No', 'Nomor Peserta', 'NIS/NISN', 'Nama Lengkap', 'Kelas', 'Waktu Selesai', 'Benar PG', 'Skor PG', 'Skor Essay', 'Nilai Akhir', 'Predikat', 'Keterangan'];
+      const rows = examResults.map((r, i) => {
+        const pred = getPredicate(r.finalScore);
+        const status = r.finalScore >= appSettings.kkm ? 'TUNTAS' : 'BELUM TUNTAS';
+        return [
+          i + 1,
+          `"${r.nopes}"`,
+          `"${r.nisn || '-'}"`,
+          `"${r.name}"`,
+          `"${r.kelas}"`,
+          `"${r.submittedAt}"`,
+          `${r.pgCorrect}/${r.pgTotal}`,
+          r.pgScore,
+          r.essayScore,
+          r.finalScore,
+          `"${pred.code} - ${pred.label}"`,
+          `"${status}"`
+        ].join(',');
+      });
+
+      const csvContent = '\uFEFF' + [headers.join(','), ...rows].join('\n');
+      downloadFile(`Rekap_SAS_PJOK_${new Date().toISOString().slice(0, 10)}.csv`, csvContent, 'text/csv;charset=utf-8;');
+    }
+
+    function exportSingleStudentJSON() {
+      const id = document.getElementById('select-result-student').value;
+      const r = examResults.find(item => item.id === id);
+      if (!r) {
+        showModal('Pilih Peserta', 'Pilih salah satu peserta terlebih dahulu untuk mengekspor hasil JSON.');
+        return;
+      }
+      downloadFile(`Hasil_${r.nopes}_${r.name.replace(/\s+/g, '_')}.json`, JSON.stringify(r, null, 2), 'application/json');
+    }
+
+    function backupAllDataJSON() {
+      const payload = {
+        exportedAt: new Date().toISOString(),
+        settings: appSettings,
+        questions: appQuestions,
+        results: examResults,
+        registeredStudents: registeredStudents
+      };
+      downloadFile(`Backup_SAS_PJOK_SMKWaliwaLaimu_${new Date().toISOString().slice(0, 10)}.json`, JSON.stringify(payload, null, 2), 'application/json');
+    }
+
+    function restoreAllDataJSON() {
+      const fileInput = document.getElementById('restore-file-input');
+      if (!fileInput.files || fileInput.files.length === 0) {
+        showModal('Pilih File', 'Silakan pilih file cadangan berformat <strong>.json</strong> terlebih dahulu.');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        try {
+          const data = JSON.parse(event.target.result);
+          if (!data.questions || !data.settings) {
+            throw new Error('Struktur file JSON tidak valid.');
+          }
+          appSettings = { ...DEFAULT_SETTINGS, ...data.settings };
+          appQuestions = data.questions;
+          examResults = data.results || [];
+          registeredStudents = data.registeredStudents || [];
+
+          saveAllToStorage();
+          applySettingsToUI();
+          renderAdminTables();
+          refreshDashboard();
+          populateStudentDropdowns();
+
+          showModal('Restore Berhasil', 'Seluruh data bank soal, pengaturan, dan hasil ujian berhasil dipulihkan dari file JSON.');
+        } catch (err) {
+          showModal('Gagal Restore', 'File JSON tidak valid atau rusak: ' + err.message);
+        }
+      };
+      reader.readAsText(fileInput.files[0]);
+    }
+
+    function confirmResetResults() {
+      showModal(
+        '⚠️ Konfirmasi Hapus Hasil Ujian',
+        'Tindakan ini akan menghapus <strong>seluruh nilai dan jawaban peserta</strong> (bank soal tetap aman). Pastikan Anda sudah melakukan Backup JSON terlebih dahulu. Lanjutkan?',
+        [
+          { text: 'Batal', class: 'btn-outline', action: closeModal },
+          {
+            text: 'Ya, Hapus Semua Hasil',
+            class: 'btn-danger',
+            action: () => {
+              examResults = [];
+              localStorage.removeItem(STORAGE_KEYS.ACTIVE_EXAM);
+              saveAllToStorage();
+              renderAdminTables();
+              refreshDashboard();
+              populateStudentDropdowns();
+              closeModal();
+            }
+          }
+        ]
+      );
+    }
+
+    function confirmFactoryReset() {
+      showModal(
+        '⚠️ Konfirmasi Reset Total Aplikasi',
+        'Semua data (hasil ujian, peserta terdaftar, perubahan soal, dan pengaturan) akan dikembalikan ke <strong>pengaturan awal</strong>. Lanjutkan?',
+        [
+          { text: 'Batal', class: 'btn-outline', action: closeModal },
+          {
+            text: 'Ya, Reset Total',
+            class: 'btn-danger',
+            action: () => {
+              localStorage.removeItem(STORAGE_KEYS.SETTINGS);
+              localStorage.removeItem(STORAGE_KEYS.QUESTIONS);
+              localStorage.removeItem(STORAGE_KEYS.RESULTS);
+              localStorage.removeItem(STORAGE_KEYS.REGISTERED);
+              localStorage.removeItem(STORAGE_KEYS.ACTIVE_EXAM);
+              closeModal();
+              initApp();
+              renderAdminTables();
+            }
+          }
+        ]
+      );
+    }
+
+    function escapeHTML(str) {
+      if (str === null || str === undefined) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // Jalankan aplikasi saat halaman selesai dimuat
+    window.onload = function () {
+      initApp();
+      renderCertificate();
+    };
+  </script>
+</body>
+</html>
